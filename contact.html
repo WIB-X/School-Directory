@@ -1,61 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact / Feedback - WIBest</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - WIBest</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 600px;
-      margin: 40px auto;
-      padding: 10px;
-    }
-    h2 {
-      text-align: center;
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-    }
-    label {
-      margin: 10px 0 5px;
-    }
-    input, textarea {
-      padding: 8px;
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    input[type="submit"], input[type="reset"] {
-      margin: 15px 5px 0 0;
-      padding: 10px;
-      width: 100px;
-      cursor: pointer;
-    }
-    .buttons {
-      display: flex;
-      justify-content: flex-start;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
   </style>
 </head>
 <body>
-  <h2>Contact / Feedback</h2>
-  <p>Please suggest corrections or new schools by filling out the form below:</p>
-  <form action="mailto:your-email@example.com" method="POST" enctype="text/plain">
-    <label for="name">Your Name:</label>
-    <input type="text" id="name" name="name" required />
-
-    <label for="email">Your Email:</label>
-    <input type="email" id="email" name="email" required />
-
-    <label for="message">Your Message:</label>
-    <textarea id="message" name="message" rows="6" required></textarea>
-
-    <div class="buttons">
-      <input type="submit" value="Send" />
-      <input type="reset" value="Clear" />
+  <!-- SAME NAVIGATION -->
+  <nav style="background: linear-gradient(135deg, #007bff 0%, #0056b3 100%); padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000;">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px;">
+      <div style="font-size: 24px; font-weight: 700; color: white;"> WIBest</div>
+      <ul style="list-style: none; margin: 0; padding: 0; display: flex; gap: 30px;">
+        <li><a href="index.html" style="color: white; text-decoration: none; font-weight: 600; padding: 10px 15px; border-radius: 25px; transition: all 0.3s;"> Home</a></li>
+        <li><a href="about.html" style="color: white; text-decoration: none; font-weight: 600; padding: 10px 15px; border-radius: 25px; transition: all 0.3s;"> About</a></li>
+        <li><a href="contact.html" style="color: #fff; background: rgba(255,255,255,0.2); text-decoration: none; font-weight: 600; padding: 10px 15px; border-radius: 25px;"> Contact</a></li>
+      </ul>
     </div>
-  </form>
+  </nav>
+
+  <!-- CONTACT FORM SECTION -->
+  <section style="max-width: 600px; margin: 60px auto; padding: 40px; background: white; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.1);">
+    <h1 style="color: #212529; font-size: 32px; margin-bottom: 10px; text-align: center;"> Contact / Feedback</h1>
+    <p style="color: #6c757d; text-align: center; margin-bottom: 40px; font-size: 18px;"> We value your Suggestions and feedback!</p>
+    
+    <form action="mailto:support@wibest.in" method="POST" enctype="text/plain">
+      <div style="margin-bottom: 25px;">
+        <label for="name" style="display: block; margin-bottom: 8px; font-weight: 600; color: #212529; font-size: 16px;"> Your Name:</label>
+        <input type="text" id="name" name="name" required style="width: 100%; padding: 15px; border: 2px solid #e9ecef; border-radius: 10px; font-size: 16px; transition: all 0.3s;" />
+      </div>
+
+      <div style="margin-bottom: 25px;">
+        <label for="email" style="display: block; margin-bottom: 8px; font-weight: 600; color: #212529; font-size: 16px;"> Your Email:</label>
+        <input type="email" id="email" name="email" required style="width: 100%; padding: 15px; border: 2px solid #e9ecef; border-radius: 10px; font-size: 16px; transition: all 0.3s;" />
+      </div>
+
+      <div style="margin-bottom: 30px;">
+        <label for="message" style="display: block; margin-bottom: 8px; font-weight: 600; color: #212529; font-size: 16px;"> Your Message:</label>
+        <textarea id="message" name="message" rows="6" required style="width: 100%; padding: 15px; border: 2px solid #e9ecef; border-radius: 10px; font-size: 16px; resize: vertical; font-family: inherit; transition: all 0.3s;"></textarea>
+      </div>
+
+      <div style="display: flex; gap: 15px; justify-content: center;">
+        <input type="reset" value="Clear" style="padding: 15px 30px; background: #6c757d; color: white; border: none; border-radius: 10px; cursor: pointer; font-size: 16px; font-weight: 600; flex: 1; max-width: 150px;" />
+        <input type="submit" value="Send Feedback" style="padding: 15px 30px; background: #007bff; color: white; border: none; border-radius: 10px; cursor: pointer; font-size: 16px; font-weight: 600; flex: 1; max-width: 200px;" />
+      </div>
+    </form>
+  </section>
+
+  <!-- FOOTER (optional - copy from index.html if needed) -->
 </body>
 </html>
