@@ -806,5 +806,88 @@ function openSchoolModal(school) {
 <script 
 src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
 </script>
+<!-- FOOTER SECTION - Add this as your footer -->
+<footer style="background: #f8f9fa; padding: 30px 20px; text-align: center; border-top: 2px solid #e9ecef; margin-top: 50px;">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    <p style="margin: 0 0 15px 0; font-size: 16px; color: #495057;">© 2025 WIBest - Which Is Best. Helping parents choose the best schools in Bangalore.</p>
+    <a href="#" id="contactLink" style="color: #007bff; text-decoration: none; font-weight: 600; font-size: 16px; padding: 10px 20px; border: 2px solid #007bff; border-radius: 25px; transition: all 0.3s ease;">📧 Contact / Feedback</a>
+  </div>
+</footer>
+
+<!-- CONTACT FORM - Insert immediately AFTER the footer above -->
+<section id="contactFormSection" style="display:none; background: white; max-width: 600px; margin: 30px auto; padding: 30px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid #e9ecef;">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+    <h2 style="margin: 0; color: #212529; font-size: 24px;">📝 Contact / Feedback</h2>
+    <a href="#" id="closeForm" style="color: #dc3545; text-decoration: none; font-weight: 600;">✕ Close</a>
+  </div>
+  <p style="color: #6c757d; margin: 0 0 25px 0;">Suggest corrections or new schools. We value your feedback!</p>
+  
+  <form action="mailto:support@wibest.in" method="POST" enctype="text/plain">
+    <div style="margin-bottom: 20px;">
+      <label for="name" style="display: block; margin-bottom: 8px; font-weight: 600; color: #212529;">👤 Your Name:</label>
+      <input type="text" id="name" name="name" required style="width: 100%; padding: 12px 15px; border: 2px solid #e9ecef; border-radius: 8px; font-size: 16px; transition: border-color 0.3s ease; box-sizing: border-box;" />
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <label for="email" style="display: block; margin-bottom: 8px; font-weight: 600; color: #212529;">📧 Your Email:</label>
+      <input type="email" id="email" name="email" required style="width: 100%; padding: 12px 15px; border: 2px solid #e9ecef; border-radius: 8px; font-size: 16px; transition: border-color 0.3s ease; box-sizing: border-box;" />
+    </div>
+
+    <div style="margin-bottom: 25px;">
+      <label for="message" style="display: block; margin-bottom: 8px; font-weight: 600; color: #212529;">💬 Your Message:</label>
+      <textarea id="message" name="message" rows="6" required style="width: 100%; padding: 12px 15px; border: 2px solid #e9ecef; border-radius: 8px; font-size: 16px; resize: vertical; transition: border-color 0.3s ease; box-sizing: border-box; font-family: inherit;"></textarea>
+    </div>
+
+    <div style="display: flex; gap: 15px; justify-content: flex-end;">
+      <input type="reset" value="Clear" style="padding: 12px 24px; background: #6c757d; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: 600; transition: background 0.3s ease;" />
+      <input type="submit" value="Send Feedback" style="padding: 12px 24px; background: #007bff; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: 600; transition: background 0.3s ease;" />
+    </div>
+  </form>
+</section>
+
+<!-- JAVASCRIPT - Insert as the VERY LAST thing before </body> -->
+<script>
+  const contactLink = document.getElementById('contactLink');
+  const contactFormSection = document.getElementById('contactFormSection');
+  const closeForm = document.getElementById('closeForm');
+
+  function toggleContactForm() {
+    if (contactFormSection.style.display === 'none' || contactFormSection.style.display === '') {
+      contactFormSection.style.display = 'block';
+      contactLink.innerHTML = '✕ Hide Form';
+      contactLink.style.background = '#dc3545';
+      contactLink.style.color = 'white';
+      contactFormSection.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      contactFormSection.style.display = 'none';
+      contactLink.innerHTML = '📧 Contact / Feedback';
+      contactLink.style.background = 'transparent';
+      contactLink.style.color = '#007bff';
+      contactLink.style.border = '2px solid #007bff';
+    }
+  }
+
+  contactLink.addEventListener('click', function(event) {
+    event.preventDefault();
+    toggleContactForm();
+  });
+
+  closeForm.addEventListener('click', function(event) {
+    event.preventDefault();
+    toggleContactForm();
+  });
+
+  // Form input focus effects
+  document.querySelectorAll('input, textarea').forEach(input => {
+    input.addEventListener('focus', function() {
+      this.style.borderColor = '#007bff';
+      this.style.boxShadow = '0 0 0 3px rgba(0,123,255,0.1)';
+    });
+    input.addEventListener('blur', function() {
+      this.style.borderColor = '#e9ecef';
+      this.style.boxShadow = 'none';
+    });
+  });
+</script>	
 </body>
 </html>
