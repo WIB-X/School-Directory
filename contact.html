@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact / Feedback - WIBest</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 10px;
+    }
+    h2 {
+      text-align: center;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    label {
+      margin: 10px 0 5px;
+    }
+    input, textarea {
+      padding: 8px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    input[type="submit"], input[type="reset"] {
+      margin: 15px 5px 0 0;
+      padding: 10px;
+      width: 100px;
+      cursor: pointer;
+    }
+    .buttons {
+      display: flex;
+      justify-content: flex-start;
+    }
+  </style>
+</head>
+<body>
+  <h2>Contact / Feedback</h2>
+  <p>Please suggest corrections or new schools by filling out the form below:</p>
+  <form action="mailto:your-email@example.com" method="POST" enctype="text/plain">
+    <label for="name">Your Name:</label>
+    <input type="text" id="name" name="name" required />
+
+    <label for="email">Your Email:</label>
+    <input type="email" id="email" name="email" required />
+
+    <label for="message">Your Message:</label>
+    <textarea id="message" name="message" rows="6" required></textarea>
+
+    <div class="buttons">
+      <input type="submit" value="Send" />
+      <input type="reset" value="Clear" />
+    </div>
+  </form>
+</body>
+</html>
