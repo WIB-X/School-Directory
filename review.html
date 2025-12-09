@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rate this school – WIBest</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <style>
+    body {
+      background: #f8fafc;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    .page-wrapper {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 15px;
+    }
+    .card {
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 10px 30px rgba(15,23,42,0.09);
+      border-radius: 16px;
+      border: 1px solid #e5e7eb;
+    }
+    .badge-city {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #2563eb;
+      color: #fff;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <div class="card bg-white p-4 p-md-5">
+      <h1 class="h4 mb-2">Rate this school</h1>
+      <p class="text-muted mb-3" id="schoolContext">
+        Loading school details…
+      </p>
+
+      <div class="mb-3">
+        <span class="badge-city" id="badgeCity" style="display:none;"></span>
+      </div>
+
+      <!-- Replace FORM ACTION email with your email -->
+      <form action="https://formsubmit.co/your-support@wibest.in" method="POST" class="mt-2">
+
+        <!-- FormSubmit config -->
+        <input type="hidden" name="_subject" value="New school review from WIBest" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="true" />
+        <!-- Optional: redirect after submit -->
+        <!-- <input type="hidden" name="_next" value="https://wibest.in/thank-you.html" /> -->
+
+        <!-- School name (read-only) -->
+        <div class="mb-3">
+          <label class="form-label">School name</label>
+          <input type="text" class="form-control" id="schoolNameInput"
+                 name="school_name" readonly />
+        </div>
+
+        <!-- City (read-only) -->
+        <div class="mb-3">
+          <label class="form-label">City</label>
+          <input type="text" class="form-control" id="cityInput"
+                 name="city" readonly />
+        </div>
+
+        <!-- Relationship -->
+        <div class="mb-3">
+          <label class="form-label">You are a</label>
+          <select class="form-select" name="relation" required>
+            <option value="">Select one</option>
+            <option value="Parent">Parent</option>
+            <option value="Student">Student</option>
+            <option value="Alumni">Alumni</option>
+            <option value="Staff">Staff</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <!-- Rating -->
+        <div class="mb-3">
+          <label class="form-label">Rating (1–5)</label>
+          <select class="form-select" name="rating" required>
+            <option value="">Select rating</option>
+            <option value="5">5 – Excellent</option>
+            <option value="4">4 – Good</option>
+            <option value="3">3 – Average</option>
+            <option value="2">2 – Below average</option>
+            <option value="1">1 – Poor</option>
+          </select>
+        </div>
+
+        <!-- Comment -->
+        <div class="mb-3">
+          <label class="form-label">Your review</label>
+          <textarea class="form-control" name="comment" rows="4"
+                    placeholder="Share what you liked, what could be better, and anything future parents or students should know."
+                    required></textarea>
+        </div>
+
+        <!-- Optional contact (for verification, not shown publicly) -->
+        <div class="mb-3">
+          <label class="form-label">Email (optional, for verification only)</label>
+          <input type="email" class="form-control" name="contact_email"
+                 placeholder="We will not display this publicly." />
+        </div>
+
+        <p class="text-muted small mb-3">
+          By submitting, you confirm this is your genuine experience.
+          Reviews may be moderated before appearing on WIBest.
+        </p>
+
+        <div class="d-flex justify-content-between align-items-center gap-2">
+          <a href="javascript:window.close();" class="btn btn-outline-secondary">
+            Close
+          </a>
+          <button type="submit" class="btn btn-primary">
+            Submit review
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      const school = params.get('school') || '';
+      const city = params.get('city') || '';
+
+      const schoolInput = document.getElementById('schoolNameInput');
+      const cityInput = document.getElementById('cityInput');
+      const context = document.getElementById('schoolContext');
+      const badgeCity = document.getElementById('badgeCity');
+
+      schoolInput.value = school;
+      cityInput.value = city;
+
+      if (school) {
+        context.textContent = 'You are rating: ' + school + (city ? ' (' + city + ')' : '');
+      } else {
+        context.textContent = 'Use this form to share your experience with a school.';
+      }
+
+      if (city) {
+        badgeCity.style.display = 'inline-block';
+        badgeCity.textContent = city.toUpperCase();
+      }
+    })();
+  </script>
+</body>
+</html>
