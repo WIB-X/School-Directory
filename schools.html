@@ -1,215 +1,365 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-TQT9FP2S');</script>
-    <!-- End Google Tag Manager -->
+	<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TQT9FP2S');</script>
+<!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WIB - School Directory</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-       :root {
-    --primary-color: #2563eb;
-    --light-bg: #f8fafc;
-    --card-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    --border-radius: 12px;
+        :root {
+    --primary: #2563eb;
+    --success: #2ca02c;
+    --danger: #d62728;
+    --warning: #ff7f0e;
+    --info: #17a2b8;
 }
-.hero-section { 
-    background: linear-gradient(135deg, #2563eb, #3b82f6); 
-    color: white; 
-    padding: 80px 0; 
-    margin-bottom: 40px; 
-}
-.hero-section h1 { font-size: 3rem; font-weight: 700; margin-bottom: 20px; }
-.hero-section .lead { font-size: 1.25rem; opacity: 0.95;
-        }
-        
 
-        .filters { 
-            background: white; 
-            padding: 30px; 
-            border-radius: var(--border-radius); 
-            box-shadow: var(--card-shadow); 
-            margin-bottom: 30px; 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .filter-group label { 
-            font-weight: 600; 
-            color: #333; 
-            margin-bottom: 8px; 
-            display: block; 
-            font-size: 14px; 
-            text-transform: uppercase; 
-            letter-spacing: 0.5px; 
+
+        body {
+    background: #f8fafc;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-top: 90px;
+}
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px 0;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-bottom: 5px solid var(--primary);
         }
-        .form-control, .form-select { 
-            border: 2px solid #e0e0e0; 
-            border-radius: 8px; 
-            padding: 12px; 
-            font-size: 14px; 
-            transition: all 0.3s ease; 
+
+        .header h1 {
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 10px;
         }
-        .form-control:focus, .form-select:focus { 
-            border-color: var(--primary-color); 
-            box-shadow: 0 0 0 0.2rem rgba(37,99,235,0.25); 
+
+        .header p {
+            color: #666;
+            margin-bottom: 0;
         }
-        
-        .school-card { 
-            background: white; 
-            border-radius: var(--border-radius); 
-            overflow: hidden; 
-            margin-bottom: 20px; 
-            transition: all 0.3s ease; 
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
-            cursor: pointer; 
-            border-left: 5px solid var(--primary-color); 
+
+        .filters {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
-        .school-card:hover { 
-            transform: translateY(-5px); 
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15); 
+
+        .filter-group {
+            margin-bottom: 15px;
         }
-        .school-card-header { 
-            background: linear-gradient(135deg, var(--primary-color), #1d4ed8); 
-            color: white; 
-            padding: 20px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
+
+        .filter-group label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            display: block;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
-        .school-rank { 
-            background: rgba(255,255,255,0.3); 
-            width: 40px; 
-            height: 40px; 
-            border-radius: 50%; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            font-weight: bold; 
-            font-size: 18px; 
+
+        .form-control, .form-select {
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 14px;
+            transition: all 0.3s ease;
         }
-        .school-card-body { padding: 20px; }
-        .school-name { 
-            font-size: 1.4rem; 
-            font-weight: 700; 
-            color: #333; 
-            margin-bottom: 10px; 
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 0.2rem rgba(31, 119, 180, 0.25);
         }
-        .school-info { 
-            display: grid; 
-            grid-template-columns: repeat(2, 1fr); 
-            gap: 15px; 
-            margin-bottom: 15px; 
+
+        .school-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            border-left: 5px solid var(--primary);
         }
-        .info-item { font-size: 13px; }
-        .info-label { 
-            color: #666; 
-            font-weight: 600; 
-            text-transform: uppercase; 
-            letter-spacing: 0.3px; 
-            margin-bottom: 3px; 
+
+        .school-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
-        .info-value { 
-            color: var(--primary-color); 
-            font-weight: 700; 
-            font-size: 15px; 
+
+        .school-card-header {
+            background: linear-gradient(135deg, var(--primary) 0%, #1a5fa0 100%);
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .rating-badge { 
-            background: #ffc107; 
-            color: #333; 
-            padding: 5px 10px; 
-            border-radius: 20px; 
-            font-weight: bold; 
-            font-size: 13px; 
+
+        .school-rank {
+            background: rgba(255, 255, 255, 0.3);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
         }
-        .badge-city, .board-badge { 
-            background: var(--primary-color); 
-            color: white; 
-            padding: 6px 12px; 
-            border-radius: 20px; 
-            font-weight: 600; 
-            font-size: 12px; 
-            margin-right: 8px; 
-            text-transform: uppercase; 
-            letter-spacing: 0.3px; 
+
+        .school-card-body {
+            padding: 20px;
         }
-        .safety-stars { color: #ffc107; font-size: 14px; }
-        .fees-badge { 
-            background: #f0f0f0; 
-            padding: 8px 12px; 
-            border-radius: 8px; 
-            font-weight: 600; 
+
+        .school-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
         }
-        
-        .load-more-container { text-align: center; margin: 30px 0; }
-        .btn-load-more { 
-            background: var(--primary-color); 
-            color: white; 
-            border: none; 
-            padding: 12px 40px; 
-            border-radius: 25px; 
-            font-weight: 600; 
-            cursor: pointer; 
-            transition: all 0.3s ease; 
-            font-size: 14px; 
-            text-transform: uppercase; 
-            letter-spacing: 1px; 
+
+        .school-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 15px;
         }
-        .btn-load-more:hover { 
-            background: #1d4ed8; 
-            transform: scale(1.05); 
+
+        .info-item {
+            font-size: 13px;
         }
-        
-        .stats-container { 
-            background: white; 
-            padding: 20px; 
-            border-radius: var(--border-radius); 
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
-            margin-bottom: 20px; 
+
+        .info-label {
+            color: #666;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            margin-bottom: 3px;
         }
-        .stats-item { text-align: center; padding: 15px; }
-        .stats-number { 
-            font-size: 28px; 
-            font-weight: 700; 
-            color: var(--primary-color); 
+
+        .info-value {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 15px;
         }
-        .stats-label { 
-            font-size: 12px; 
-            color: #666; 
-            text-transform: uppercase; 
-            letter-spacing: 0.3px; 
-            margin-top: 5px; 
+
+        .rating-badge {
+            display: inline-block;
+            background: #ffc107;
+            color: #333;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 13px;
         }
-        
-        .modal-header { 
-            background: linear-gradient(135deg, var(--primary-color), #1d4ed8); 
-            color: white; 
-            border-radius: var(--border-radius) var(--border-radius) 0 0; 
+
+        .badge-city {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 12px;
+            margin-right: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
         }
-        .no-results { 
-            text-align: center; 
-            padding: 40px; 
-            color: #999; 
+
+        .board-badge {
+            display: inline-block;
+            background: #e8f4f8;
+            color: var(--primary);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 12px;
+            margin-right: 8px;
         }
-        
-@media (max-width: 768px) { .hero-section h1 { font-size: 2rem; } .hero-section { padding: 60px 0; } }
-.navbar { background: linear-gradient(135deg, #2563eb, #1d4ed8); box-shadow: var(--card-shadow); position: fixed; top: 0; width: 100%; z-index: 1000; }
-body { padding-top: 90px;
+
+        .safety-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
+
+        .safety-stars {
+            color: #ffc107;
+            font-size: 14px;
+        }
+
+        .fees-badge {
+            background: #f0f0f0;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            color: var(--danger);
+        }
+
+        .load-more-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .btn-load-more {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 40px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-load-more:hover {
+            background: #1a5fa0;
+            transform: scale(1.05);
+        }
+
+        .btn-load-more:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: scale(1);
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary) 0%, #1a5fa0 100%);
+            color: white;
+            border: none;
+        }
+
+        .modal-header .btn-close {
+            filter: brightness(0) invert(1);
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+        }
+
+        .no-results svg {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+
+        @media (max-width: 768px) {
+            .school-info {
+                grid-template-columns: 1fr;
+            }
+
+            .filters {
+                padding: 15px;
+            }
+
+            .school-card-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+
+        .stats-container {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .stats-item {
+            text-align: center;
+            padding: 15px;
+        }
+
+        .stats-number {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stats-label {
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            margin-top: 5px;
+        }
+.hero-section {
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
+    color: white;
+    padding: 80px 0;
+    margin-bottom: 40px;
+}
+.hero-section h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+.hero-section .lead {
+    font-size: 1.25rem;
+    opacity: 0.95;
+}
+.navbar {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+.navbar-brand img {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+.nav-link {
+    color: white !important;
+    font-weight: 500;
+    padding: 12px 20px !important;
+    border-radius: 25px;
+}
+.nav-link.active {
+    background: rgba(255,255,255,0.2);
+}
+@media (max-width: 768px) {
+    .hero-section h1 { font-size: 2rem; }
+    .hero-section { padding: 60px 0; }
+}
     </style>
 </head>
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TQT9FP2S"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-
-    <!-- MAIN NAVIGATION -->
-   <!-- DELETE your old nav and REPLACE with this -->
-<nav class="navbar navbar-expand-lg navbar-dark">
+	<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TQT9FP2S"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+	<!-- MAIN NAVIGATION MENU - Add this at VERY TOP -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
         <a class="navbar-brand" href="index.html">
             <img src="logo.png" alt="WIBest logo">
@@ -229,10 +379,8 @@ body { padding-top: 90px;
         </div>
     </div>
 </nav>
-
-    <!-- NEW HERO SECTION - IDENTICAL TO COLLEGES PAGE -->
-<!-- DELETE your old header and REPLACE with this -->
-<section class="hero-section">
+    <!-- Header -->
+    <section class="hero-section">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-8">
@@ -242,15 +390,16 @@ body { padding-top: 90px;
         </div>
     </div>
 </section>
-
-
     <div class="container">
         <!-- Filters -->
         <div class="filters">
-            <div style="text-align: right; margin-bottom: 20px;">
-                <button id="resetFiltersBtn" type="button" class="btn btn-outline-secondary btn-sm">Reset filters</button>
-            </div>
-            <div class="row g-3">
+			<div style="text-align: right; margin-top: 10px;">
+  <button id="resetFiltersBtn" type="button"
+    style="border: none; background: #f1f3f5; color: #333; padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; cursor: pointer;">
+    Reset filters & sort
+  </button>
+</div>
+            <div class="row">
                 <div class="col-md-3">
                     <div class="filter-group">
                         <label for="cityFilter">City</label>
@@ -288,9 +437,9 @@ body { padding-top: 90px;
                     <div class="filter-group">
                         <label for="sortOptions">Sort By</label>
                         <select id="sortOptions" class="form-select">
-                            <option value="rating">Rating High to Low</option>
-                            <option value="fees-low">Fees Low to High</option>
-                            <option value="fees-high">Fees High to Low</option>
+                            <option value="rating">Rating (High to Low)</option>
+                            <option value="fees-low">Fees (Low to High)</option>
+                            <option value="fees-high">Fees (High to Low)</option>
                             <option value="safety">Safety Rating</option>
                         </select>
                     </div>
@@ -304,7 +453,7 @@ body { padding-top: 90px;
                 <div class="stats-container">
                     <div class="row">
                         <div class="col-6 stats-item">
-                            <div class="stats-number" id="totalSchools">70+</div>
+                            <div class="stats-number" id="totalSchools">70</div>
                             <div class="stats-label">Total Schools</div>
                         </div>
                         <div class="col-6 stats-item">
@@ -322,167 +471,525 @@ body { padding-top: 90px;
                             <div class="stats-label">Avg Rating</div>
                         </div>
                         <div class="col-6 stats-item">
-                            <div class="stats-number" id="avgFees">4.5L</div>
+                            <div class="stats-number" id="avgFees">â‚¹4.5L</div>
                             <div class="stats-label">Avg Fees</div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="stats-container">
-                    <div class="row">
-                        <div class="col-6 stats-item">
-                            <div class="stats-number" id="filteredCount">70+</div>
-                            <div class="stats-label">Showing</div>
-                        </div>
-                        <div class="col-6 stats-item">
-                            <div class="stats-number" id="boardResults">98.5</div>
-                            <div class="stats-label">Avg Results</div>
-                        </div>
-                    </div>
-                </div>
+           <div class="col-md-4">
+    <div class="stats-container">
+        <div class="row">
+            <div class="col-6 stats-item">
+                <div class="stats-number" id="filteredCount">70</div>
+                <div class="stats-label">Showing</div>
+            </div>
+            <div class="col-6 stats-item">
+                <div class="stats-number" id="boardResults">98.5%</div>
+                <div class="stats-label">Avg Results</div>
             </div>
         </div>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="alert alert-warning text-center mb-3" role="alert">
+    Site is under maintenance. Information related to Google Maps will be updated soon.
+</div>
+
+<div id="map" style="width:100%;height:40px;border-radius:12px;margin-bottom:20px;display:none;"></div>
 
         <!-- Schools Grid -->
         <div id="schoolsContainer"></div>
-        
+
         <!-- Load More -->
         <div class="load-more-container">
             <button id="loadMoreBtn" class="btn-load-more">Load More Schools</button>
-            <p id="noMoreMsg" style="color: #999; margin-top: 20px; display: none;">No more schools to load</p>
+            <p id="noMoreMsg" style="color: white; margin-top: 20px; display: none;">No more schools to load</p>
         </div>
     </div>
-
-    <!-- School Details Modal -->
-    <div class="modal fade" id="schoolModal" tabindex="-1">
-        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalSchoolName">School details</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <span class="badge-city" id="modalCity"></span>
-                        <span class="board-badge" id="modalBoard"></span>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <div class="info-label">Location</div>
-                            <div class="info-value" id="modalLocation"></div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="info-label">Online Rating</div>
-                            <div class="info-value" id="modalRating"></div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="info-label">Online Reviews</div>
-                            <div class="info-value" id="modalReviews"></div>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-md-4">
-                            <div class="info-label">Annual fees</div>
-                            <div class="info-value" id="modalFees"></div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="info-label">Board results</div>
-                            <div class="info-value" id="modalBoardResults"></div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="info-label">Safety rating</div>
-                            <div class="info-value" id="modalSafety"></div>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-md-4">
-                            <div class="info-label">Admission age</div>
-                            <div class="info-value" id="modalAdmitAge"></div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="info-label">Student/teacher ratio</div>
-                            <div class="info-value" id="modalRatio"></div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="info-label">Phone</div>
-                            <div class="info-value" id="modalPhone"></div>
-                        </div>
-                    </div>
-                    <div class="mb-2">
-                        <div class="info-label">Website</div>
-                        <div class="info-value">
-                            <a href="#" id="modalWebsiteLink"></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
+<!-- School Details Modal -->
+<div class="modal fade" id="schoolModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalSchoolName">School details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <span class="badge-city" id="modalCity"></span>
+          <span class="board-badge" id="modalBoard"></span>
         </div>
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <div class="info-label">Location</div>
+            <div class="info-value" id="modalLocation"></div>
+          </div>
+          <div class="col-md-3">
+            <div class="info-label">Online Rating</div>
+            <div class="info-value" id="modalRating"></div>
+          </div>
+          <div class="col-md-3">
+            <div class="info-label">Online Reviews</div>
+            <div class="info-value" id="modalReviews"></div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-md-4">
+            <div class="info-label">Annual fees</div>
+            <div class="info-value" id="modalFees"></div>
+          </div>
+          <div class="col-md-4">
+            <div class="info-label">Board results</div>
+            <div class="info-value" id="modalBoardResults"></div>
+          </div>
+          <div class="col-md-4">
+            <div class="info-label">Safety rating</div>
+            <div class="info-value" id="modalSafety"></div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-md-4">
+            <div class="info-label">Admission age</div>
+            <div class="info-value" id="modalAdmitAge"></div>
+          </div>
+          <div class="col-md-4">
+            <div class="info-label">Studentâ€“teacher ratio</div>
+            <div class="info-value" id="modalRatio"></div>
+          </div>
+          <div class="col-md-4">
+            <div class="info-label">Phone</div>
+            <div class="info-value" id="modalPhone"></div>
+          </div>
+        </div>
+        <div class="mb-2">
+          <div class="info-label">Website</div>
+          <div class="info-value">
+            <a href="#"  id="modalWebsiteLink"></a>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
     </div>
+  </div>
+</div>
+<script async
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2JxO29IjHhWrpmejib4-YcE2fH6s821E&callback=initMap">
+</script>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
     <script>
         const INITIAL_LOAD = 5;
         let loadedCount = 0;
         let filteredSchools = [];
-        
-        // Your existing schoolsData array (keeping all your data exactly the same)
+let map;
+let markers = [];
+
+function initMap() {
+  const center = { lat: 20.5937, lng: 78.9629 }; // India's center, or Bangalore as default
+  map = new google.maps.Map(document.getElementById("map"), {
+    center,
+    zoom: 5,
+  });
+  updateMapMarkers();
+}
+
+function updateMapMarkers() {
+  if (!map) return;
+  markers.forEach(m => m.setMap(null));
+  markers = [];
+  filteredSchools.forEach(s => {
+    if (!s.lat || !s.lng) return;
+    const marker = new google.maps.Marker({
+      position: { lat: s.lat, lng: s.lng },
+      map,
+      title: s.name,
+    });
+    markers.push(marker);
+  });
+  // Zoom to markers
+  if (markers.length) {
+    const bounds = new google.maps.LatLngBounds();
+    markers.forEach(m => bounds.extend(m.getPosition()));
+    map.fitBounds(bounds);
+    if (markers.length === 1) map.setZoom(13);
+  }
+}
+
+
         const schoolsData = [
             // BANGALORE
-            {id: "TISB", city: "bangalore", name: "The International School Bangalore", location: "Lingarajapuram", type: "IB", rating: 4.7, ratingRank: 1, boardResults: 98.5, boardRank: 1, safetyRating: 4.6, fees: 900000, admitAge: 3, ratio: "20:1", phone: "+91-80-xxxxxx", website: "tisb.org", lat: 13.0827, lng: 77.5957, reviewsCount: 850},
-            {id: "NPS", city: "bangalore", name: "National Public School", location: "Basavanagudi", type: "CBSE", rating: 4.6, ratingRank: 2, boardResults: 97.8, boardRank: 2, safetyRating: 4.5, fees: 450000, admitAge: 4, ratio: "25:1", phone: "+91-80-xxxxxx", website: "npschool.in", lat: 13.0487, lng: 77.5744, reviewsCount: 1200},
-            // ... (keeping ALL your existing school data exactly the same - truncated for brevity)
-            // Add all your other cities and schools here from your original file
+            { id: "TISB", city: "bangalore", name: "The International School Bangalore", location: "Lingarajapuram", type: "IB", rating: 4.7, ratingRank: 1, boardResults: "98.5%", boardRank: 1, safetyRating: 4.6, fees: 900000, admitAge: "3+", ratio: "20:1", phone: "+91-80-xxxxxx", website: "tisb.org", lat: 13.0827, lng: 77.5957, reviewsCount: 850, gender: "", color: "#1f77b4", admissions: { lkg: "Online registration", class1: "Entrance test", class5: "Merit", class11: "Board marks + Interview" }, reviews: { currentStudents: [], alumni: [], parents: [], general: [], safety: [] } },
+            { id: "NPS", city: "bangalore", name: "National Public School", location: "Basavanagudi", type: "CBSE", rating: 4.6, ratingRank: 2, boardResults: "97.8%", boardRank: 2, safetyRating: 4.5, fees: 450000, admitAge: "4+", ratio: "25:1", phone: "+91-80-xxxxxx", website: "npschool.in", lat: 13.0487, lng: 77.5744, reviewsCount: 1200, gender: "", color: "#2ca02c" },
+            { id: "BIS", city: "bangalore", name: "Bangalore International School", location: "Jakkur", type: "IB", rating: 4.5, ratingRank: 3, boardResults: "98.2%", boardRank: 1, safetyRating: 4.4, fees: 850000, admitAge: "3+", ratio: "22:1", phone: "+91-80-xxxxxx", website: "bis.ac.in", lat: 13.0955, lng: 77.5740, reviewsCount: 720, gender: "", color: "#1f77b4" },
+            { id: "JBS", city: "bangalore", name: "Jnanabharathi School", location: "Basavanagudi", type: "CBSE", rating: 4.4, ratingRank: 4, boardResults: "96.5%", boardRank: 3, safetyRating: 4.3, fees: 280000, admitAge: "5+", ratio: "28:1", phone: "+91-80-xxxxxx", website: "jnanabharathi.org", lat: 13.0470, lng: 77.5700, reviewsCount: 600, gender: "", color: "#2ca02c" },
+            { id: "GHS", city: "bangalore", name: "Greenwood High School", location: "Indiranagar", type: "CBSE", rating: 4.3, ratingRank: 5, boardResults: "95.8%", boardRank: 4, safetyRating: 4.2, fees: 320000, admitAge: "4+", ratio: "26:1", phone: "+91-80-xxxxxx", website: "greenwoodbangalore.org", lat: 13.0352, lng: 77.6245, reviewsCount: 550, gender: "", color: "#2ca02c" },
+            { id: "STONEHILL", city: "bangalore", name: "Stonehill International School", location: "Sarjapur Road", type: "CBSE/IB", rating: 4.3, ratingRank: 6, boardResults: "97.2%", boardRank: 2, safetyRating: 4.4, fees: 750000, admitAge: "3+", ratio: "20:1", phone: "+91-80-xxxxxx", website: "stonehillschool.org", lat: 12.9716, lng: 77.6412, reviewsCount: 480, gender: "", color: "#1f77b4" },
+            { id: "INVENTURE", city: "bangalore", name: "Inventure Academy", location: "Sarjapur Road", type: "CBSE", rating: 4.2, ratingRank: 7, boardResults: "96.8%", boardRank: 5, safetyRating: 4.1, fees: 520000, admitAge: "3+", ratio: "20:1", phone: "+91-80-xxxxxx", website: "inventuracademy.com", lat: 12.9631, lng: 77.6388, reviewsCount: 420, gender: "", color: "#2ca02c" },
+            { id: "BM", city: "bangalore", name: "Bangalore Montessori", location: "Koramangala", type: "Montessori", rating: 4.2, ratingRank: 8, boardResults: "N/A", boardRank: 6, safetyRating: 4.3, fees: 280000, admitAge: "2+", ratio: "15:1", phone: "+91-80-xxxxxx", website: "bangaloremontessori.org", lat: 13.0305, lng: 77.6245, reviewsCount: 380, gender: "", color: "#ff7f0e" },
+            { id: "VIDYASHILP", city: "bangalore", name: "Vidyashilp Academy", location: "Whitefield", type: "CBSE/IB", rating: 4.1, ratingRank: 9, boardResults: "96.2%", boardRank: 7, safetyRating: 4.0, fees: 620000, admitAge: "3+", ratio: "20:1", phone: "+91-80-xxxxxx", website: "vidyashilp.org", lat: 13.0619, lng: 77.7499, reviewsCount: 350, gender: "", color: "#1f77b4" },
+            { id: "BANGSCHOOL", city: "bangalore", name: "The Bangalore School", location: "Bannerghatta Road", type: "CBSE", rating: 4.0, ratingRank: 10, boardResults: "95.5%", boardRank: 8, safetyRating: 3.9, fees: 380000, admitAge: "4+", ratio: "24:1", phone: "+91-80-xxxxxx", website: "bangaloreschool.com", lat: 12.9352, lng: 77.6035, reviewsCount: 320, gender: "", color: "#2ca02c" },
+            
+            // CHENNAI
+            { id: "PSBB", city: "chennai", name: "PSBB Senior Secondary School", location: "K.K. Nagar", type: "CBSE", rating: 4.6, ratingRank: 1, boardResults: "99.1%", boardRank: 1, safetyRating: 4.5, fees: 280000, admitAge: "4+", ratio: "28:1", phone: "+91-44-xxxxxx", website: "psbbschools.ac.in", lat: 13.0313, lng: 80.2139, reviewsCount: 920, gender: "", color: "#2ca02c" },
+            { id: "CVS", city: "chennai", name: "Chettinad Vidyasharam", location: "Mylapore", type: "CBSE", rating: 4.5, ratingRank: 2, boardResults: "98.5%", boardRank: 2, safetyRating: 4.4, fees: 240000, admitAge: "5+", ratio: "30:1", phone: "+91-44-xxxxxx", website: "chettinadvidyasharam.org", lat: 13.0344, lng: 80.2567, reviewsCount: 850, gender: "", color: "#2ca02c" },
+            { id: "SISHYA", city: "chennai", name: "Sishya School", location: "Adyar", type: "ICSE", rating: 4.5, ratingRank: 3, boardResults: "97.8%", boardRank: 3, safetyRating: 4.3, fees: 180000, admitAge: "5+", ratio: "20:1", phone: "+91-44-xxxxxx", website: "sishyaschool.com", lat: 13.0036, lng: 80.2506, reviewsCount: 780, gender: "", color: "#d62728" },
+            { id: "VELS", city: "chennai", name: "Vels International School", location: "Injambakkam", type: "ICSE/IGCSE", rating: 4.4, ratingRank: 4, boardResults: "98.2%", boardRank: 4, safetyRating: 4.4, fees: 320000, admitAge: "4+", ratio: "20:1", phone: "+91-44-xxxxxx", website: "velschennai.org", lat: 12.8755, lng: 80.1901, reviewsCount: 650, gender: "", color: "#d62728" },
+            { id: "ARYAN", city: "chennai", name: "Aryan Public School", location: "Mylapore", type: "CBSE", rating: 4.3, ratingRank: 5, boardResults: "97.2%", boardRank: 5, safetyRating: 4.2, fees: 200000, admitAge: "5+", ratio: "25:1", phone: "+91-44-xxxxxx", website: "aryanpublicschool.org", lat: 13.0344, lng: 80.2600, reviewsCount: 620, gender: "", color: "#2ca02c" },
+            { id: "DONBOSCO", city: "chennai", name: "Don Bosco Matriculation", location: "Triplicane", type: "CBSE/State", rating: 4.3, ratingRank: 6, boardResults: "96.8%", boardRank: 6, safetyRating: 4.1, fees: 150000, admitAge: "5+", ratio: "30:1", phone: "+91-44-xxxxxx", website: "donbosco.ac.in", lat: 13.0600, lng: 80.2714, reviewsCount: 580, gender: "", color: "#2ca02c" },
+            { id: "PRIMROSE", city: "chennai", name: "Primrose School", location: "Injambakkam", type: "ICSE", rating: 4.2, ratingRank: 7, boardResults: "97.5%", boardRank: 7, safetyRating: 4.3, fees: 280000, admitAge: "4+", ratio: "20:1", phone: "+91-44-xxxxxx", website: "primroseschool.in", lat: 12.8755, lng: 80.1950, reviewsCount: 520, gender: "", color: "#d62728" },
+            { id: "GURU", city: "chennai", name: "Guru Nanak Vidyalaya", location: "Kilpauk", type: "CBSE", rating: 4.1, ratingRank: 8, boardResults: "96.5%", boardRank: 8, safetyRating: 4.0, fees: 180000, admitAge: "5+", ratio: "25:1", phone: "+91-44-xxxxxx", website: "gnvidyalaya.org", lat: 13.0733, lng: 80.2356, reviewsCount: 480, gender: "", color: "#2ca02c" },
+            { id: "SPRING", city: "chennai", name: "Spring Matriculation", location: "Velachery", type: "CBSE", rating: 4.0, ratingRank: 9, boardResults: "95.8%", boardRank: 9, safetyRating: 3.9, fees: 140000, admitAge: "5+", ratio: "28:1", phone: "+91-44-xxxxxx", website: "springmatric.org", lat: 12.9859, lng: 80.2197, reviewsCount: 420, gender: "", color: "#2ca02c" },
+            { id: "JEHOVAH", city: "chennai", name: "Jehovah Jireh School", location: "Pudusseri", type: "CBSE/IB", rating: 3.9, ratingRank: 10, boardResults: "95.2%", boardRank: 10, safetyRating: 3.8, fees: 220000, admitAge: "4+", ratio: "22:1", phone: "+91-44-xxxxxx", website: "jireh.org", lat: 12.9556, lng: 80.1389, reviewsCount: 350, gender: "", color: "#1f77b4" },
+
+            // HYDERABAD
+            { id: "DPSKH", city: "hyderabad", name: "Delhi Public School, Khajaguda", location: "Khajaguda", type: "CBSE", rating: 4.7, ratingRank: 1, boardResults: "99.0%", boardRank: 1, safetyRating: 4.6, fees: 320000, admitAge: "4+", ratio: "25:1", phone: "+91-40-xxxxxx", website: "dpskhajaguda.org", lat: 17.3850, lng: 78.3570, reviewsCount: 980, gender: "", color: "#2ca02c" },
+            { id: "HPS", city: "hyderabad", name: "The Hyderabad Public School", location: "Ramanthapur", type: "CBSE", rating: 4.6, ratingRank: 2, boardResults: "98.5%", boardRank: 2, safetyRating: 4.5, fees: 280000, admitAge: "4+", ratio: "26:1", phone: "+91-40-xxxxxx", website: "hpshyderabad.org", lat: 17.3589, lng: 78.5189, reviewsCount: 920, gender: "", color: "#2ca02c" },
+            { id: "BVB", city: "hyderabad", name: "Bharatiya Vidya Bhavans", location: "Jubilee Hills", type: "CBSE", rating: 4.5, ratingRank: 3, boardResults: "97.8%", boardRank: 3, safetyRating: 4.4, fees: 240000, admitAge: "5+", ratio: "28:1", phone: "+91-40-xxxxxx", website: "bvbhyderabad.org", lat: 17.3611, lng: 78.4411, reviewsCount: 850, gender: "", color: "#2ca02c" },
+            { id: "AGAKHAN", city: "hyderabad", name: "The Aga Khan Academy", location: "Kurmalguda", type: "IB", rating: 4.5, ratingRank: 4, boardResults: "99.2%", boardRank: 1, safetyRating: 4.6, fees: 850000, admitAge: "3+", ratio: "30:1", phone: "+91-40-xxxxxx", website: "agakhanacademy.org", lat: 17.3833, lng: 78.3722, reviewsCount: 720, gender: "", color: "#1f77b4" },
+            { id: "DRS", city: "hyderabad", name: "DRS International School", location: "Gundlapochampally", type: "CBSE/IB", rating: 4.4, ratingRank: 5, boardResults: "98.0%", boardRank: 4, safetyRating: 4.3, fees: 650000, admitAge: "3+", ratio: "10:1", phone: "+91-40-xxxxxx", website: "drsinternational.org", lat: 17.6631, lng: 78.4433, reviewsCount: 680, gender: "", color: "#1f77b4" },
+            { id: "PREMIA", city: "hyderabad", name: "The Premia Academy", location: "Attapur", type: "CBSE/Cambridge", rating: 4.3, ratingRank: 6, boardResults: "97.2%", boardRank: 5, safetyRating: 4.2, fees: 420000, admitAge: "4+", ratio: "15:1", phone: "+91-40-xxxxxx", website: "premiaaacademy.org", lat: 17.3000, lng: 78.5389, reviewsCount: 620, gender: "", color: "#17a2b8" },
+            { id: "ORCHIDS", city: "hyderabad", name: "Orchids The International School", location: "Bachupally", type: "CBSE", rating: 4.2, ratingRank: 7, boardResults: "96.8%", boardRank: 6, safetyRating: 4.1, fees: 280000, admitAge: "5+", ratio: "14:1", phone: "+91-40-xxxxxx", website: "orchidsschool.org", lat: 17.5056, lng: 78.3956, reviewsCount: 550, gender: "", color: "#2ca02c" },
+            { id: "MERIDIAN", city: "hyderabad", name: "Meridian School", location: "Madhapur", type: "CBSE", rating: 4.2, ratingRank: 8, boardResults: "97.0%", boardRank: 7, safetyRating: 4.2, fees: 320000, admitAge: "4+", ratio: "20:1", phone: "+91-40-xxxxxx", website: "meridianschool.org", lat: 17.4491, lng: 78.3636, reviewsCount: 520, gender: "", color: "#2ca02c" },
+            { id: "SILVEROAKS", city: "hyderabad", name: "Silver Oaks International", location: "Bachupally", type: "CBSE/IB", rating: 4.1, ratingRank: 9, boardResults: "96.5%", boardRank: 8, safetyRating: 4.0, fees: 520000, admitAge: "3+", ratio: "20:1", phone: "+91-40-xxxxxx", website: "silveroaksint.org", lat: 17.5056, lng: 78.4000, reviewsCount: 480, gender: "", color: "#1f77b4" },
+            { id: "PALLAVI", city: "hyderabad", name: "Pallavi International School", location: "Gandhipet", type: "CBSE/Cambridge", rating: 4.0, ratingRank: 10, boardResults: "95.8%", boardRank: 9, safetyRating: 3.9, fees: 240000, admitAge: "4+", ratio: "15:1", phone: "+91-40-xxxxxx", website: "pallaviint.org", lat: 17.3689, lng: 78.4928, reviewsCount: 420, gender: "", color: "#17a2b8" },
+
+            // MUMBAI
+            { id: "BSS", city: "mumbai", name: "Bombay Scottish School", location: "Mahim", type: "ICSE", rating: 4.7, ratingRank: 1, boardResults: "99.0%", boardRank: 1, safetyRating: 4.6, fees: 550000, admitAge: "4+", ratio: "22:1", phone: "+91-22-xxxxxx", website: "bombayschool.org", lat: 19.0596, lng: 72.8295, reviewsCount: 1100, gender: "", color: "#d62728" },
+            { id: "JNS", city: "mumbai", name: "Jamnabai Narsee School", location: "Vile Parle", type: "ICSE/IB", rating: 4.6, ratingRank: 2, boardResults: "98.8%", boardRank: 2, safetyRating: 4.5, fees: 600000, admitAge: "3+", ratio: "18:1", phone: "+91-22-xxxxxx", website: "jamnabainarsee.org", lat: 19.1136, lng: 72.8272, reviewsCount: 1050, gender: "", color: "#d62728" },
+            { id: "CJC", city: "mumbai", name: "Cathedral and John Connon School", location: "Fort", type: "ICSE", rating: 4.6, ratingRank: 3, boardResults: "98.5%", boardRank: 3, safetyRating: 4.5, fees: 580000, admitAge: "4+", ratio: "20:1", phone: "+91-22-xxxxxx", website: "cjc.ac.in", lat: 18.9580, lng: 72.8343, reviewsCount: 950, gender: "", color: "#d62728" },
+            { id: "ASB", city: "mumbai", name: "American School of Bombay", location: "Bandra", type: "IB", rating: 4.5, ratingRank: 4, boardResults: "99.2%", boardRank: 1, safetyRating: 4.6, fees: 1200000, admitAge: "3+", ratio: "18:1", phone: "+91-22-xxxxxx", website: "asbmumbai.org", lat: 19.0596, lng: 72.8342, reviewsCount: 820, gender: "", color: "#1f77b4" },
+            { id: "RNP", city: "mumbai", name: "R.N. Podar School", location: "Santacruz", type: "CBSE", rating: 4.5, ratingRank: 5, boardResults: "98.0%", boardRank: 4, safetyRating: 4.4, fees: 420000, admitAge: "4+", ratio: "24:1", phone: "+91-22-xxxxxx", website: "rnpodar.org", lat: 19.0870, lng: 72.8365, reviewsCount: 880, gender: "", color: "#2ca02c" },
+            { id: "DPI", city: "mumbai", name: "DY Patil International School", location: "Worli", type: "CBSE", rating: 4.4, ratingRank: 6, boardResults: "97.8%", boardRank: 5, safetyRating: 4.3, fees: 380000, admitAge: "4+", ratio: "26:1", phone: "+91-22-xxxxxx", website: "dypatil.org", lat: 19.0176, lng: 72.8194, reviewsCount: 780, gender: "", color: "#2ca02c" },
+            { id: "CAMPION", city: "mumbai", name: "Campion School", location: "Fort", type: "ICSE", rating: 4.4, ratingRank: 7, boardResults: "97.5%", boardRank: 6, safetyRating: 4.2, fees: 360000, admitAge: "5+", ratio: "24:1", phone: "+91-22-xxxxxx", website: "campion.org", lat: 18.9450, lng: 72.8343, reviewsCount: 720, gender: "", color: "#d62728" },
+            { id: "RIS", city: "mumbai", name: "Ryan International School", location: "Vile Parle", type: "CBSE", rating: 4.3, ratingRank: 8, boardResults: "96.8%", boardRank: 7, safetyRating: 4.1, fees: 320000, admitAge: "4+", ratio: "28:1", phone: "+91-22-xxxxxx", website: "ryanschool.org", lat: 19.1136, lng: 72.8272, reviewsCount: 650, gender: "", color: "#2ca02c" },
+            { id: "ABWA", city: "mumbai", name: "Aditya Birla World Academy", location: "Tardeo", type: "IB", rating: 4.2, ratingRank: 9, boardResults: "98.5%", boardRank: 2, safetyRating: 4.4, fees: 950000, admitAge: "3+", ratio: "20:1", phone: "+91-22-xxxxxx", website: "abworldacademy.org", lat: 19.0069, lng: 72.8232, reviewsCount: 580, gender: "", color: "#1f77b4" },
+            { id: "EMW", city: "mumbai", name: "Ecole Mondiale World School", location: "Juhu", type: "IB", rating: 4.1, ratingRank: 10, boardResults: "98.0%", boardRank: 3, safetyRating: 4.3, fees: 1100000, admitAge: "3+", ratio: "18:1", phone: "+91-22-xxxxxx", website: "ecolemondiale.org", lat: 19.1136, lng: 72.8272, reviewsCount: 520, gender: "", color: "#1f77b4" },
+
+            // DELHI
+            { id: "DPSRKP", city: "delhi", name: "Delhi Public School, R.K. Puram", location: "R.K. Puram", type: "CBSE", rating: 4.7, ratingRank: 1, boardResults: "99.0%", boardRank: 1, safetyRating: 4.6, fees: 380000, admitAge: "4+", ratio: "22:1", phone: "+91-11-xxxxxx", website: "dpsrkp.org", lat: 28.5244, lng: 77.1855, reviewsCount: 1200, gender: "", color: "#2ca02c" },
+            { id: "SHRIRAM", city: "delhi", name: "The Shri Ram School", location: "Vasant Vihar", type: "CBSE", rating: 4.6, ratingRank: 2, boardResults: "98.8%", boardRank: 2, safetyRating: 4.5, fees: 420000, admitAge: "4+", ratio: "20:1", phone: "+91-11-xxxxxx", website: "shriramschool.org", lat: 28.5179, lng: 77.1894, reviewsCount: 1100, gender: "", color: "#2ca02c" },
+            { id: "VVS", city: "delhi", name: "Vasant Valley School", location: "Vasant Kunj", type: "CBSE", rating: 4.6, ratingRank: 3, boardResults: "98.5%", boardRank: 3, safetyRating: 4.5, fees: 500000, admitAge: "3+", ratio: "18:1", phone: "+91-11-xxxxxx", website: "vasantvalley.org", lat: 28.5166, lng: 77.1932, reviewsCount: 1050, gender: "", color: "#2ca02c" },
+            { id: "SANSKRITI", city: "delhi", name: "Sanskriti School", location: "Chhatarpur", type: "CBSE", rating: 4.5, ratingRank: 4, boardResults: "98.2%", boardRank: 4, safetyRating: 4.4, fees: 480000, admitAge: "4+", ratio: "20:1", phone: "+91-11-xxxxxx", website: "sanskriti.org", lat: 28.4837, lng: 77.2174, reviewsCount: 980, gender: "", color: "#2ca02c" },
+            { id: "MODERN", city: "delhi", name: "Modern School, Barakhamba Road", location: "Barakhamba Road", type: "CBSE", rating: 4.5, ratingRank: 5, boardResults: "97.8%", boardRank: 5, safetyRating: 4.3, fees: 450000, admitAge: "4+", ratio: "24:1", phone: "+91-11-xxxxxx", website: "modernschool.org", lat: 28.6295, lng: 77.2187, reviewsCount: 920, gender: "", color: "#2ca02c" },
+            { id: "STEPHEN", city: "delhi", name: "St. Stephen's School", location: "Kasturba Nagar", type: "CBSE", rating: 4.4, ratingRank: 6, boardResults: "97.5%", boardRank: 6, safetyRating: 4.2, fees: 380000, admitAge: "4+", ratio: "22:1", phone: "+91-11-xxxxxx", website: "stephens.org", lat: 28.6108, lng: 77.2350, reviewsCount: 850, gender: "", color: "#2ca02c" },
+            { id: "BALBHARATI", city: "delhi", name: "Bal Bharati Public School", location: "Pusa Road", type: "CBSE", rating: 4.3, ratingRank: 7, boardResults: "96.8%", boardRank: 7, safetyRating: 4.1, fees: 320000, admitAge: "5+", ratio: "26:1", phone: "+91-11-xxxxxx", website: "balbharati.org", lat: 28.5921, lng: 77.2014, reviewsCount: 780, gender: "", color: "#2ca02c" },
+            { id: "MOTHERS", city: "delhi", name: "The Mother's International School", location: "Mehrauli", type: "CBSE", rating: 4.2, ratingRank: 8, boardResults: "96.5%", boardRank: 8, safetyRating: 4.0, fees: 380000, admitAge: "4+", ratio: "22:1", phone: "+91-11-xxxxxx", website: "mothers.org", lat: 28.4425, lng: 77.1820, reviewsCount: 720, gender: "", color: "#2ca02c" },
+            { id: "DIS", city: "delhi", name: "Delhi International School", location: "Dwarka", type: "CBSE", rating: 4.1, ratingRank: 9, boardResults: "95.8%", boardRank: 9, safetyRating: 3.9, fees: 280000, admitAge: "4+", ratio: "28:1", phone: "+91-11-xxxxxx", website: "delhiint.org", lat: 28.5921, lng: 77.0451, reviewsCount: 650, gender: "", color: "#2ca02c" },
+            { id: "RAMJAS", city: "delhi", name: "Ramjas International School", location: "New Delhi", type: "CBSE", rating: 4.0, ratingRank: 10, boardResults: "95.2%", boardRank: 10, safetyRating: 3.8, fees: 320000, admitAge: "4+", ratio: "24:1", phone: "+91-11-xxxxxx", website: "ramjas.org", lat: 28.6139, lng: 77.2090, reviewsCount: 580, gender: "", color: "#2ca02c" },
+
+            // NOIDA
+            { id: "DPSNOIDA", city: "noida", name: "Delhi Public School, Noida", location: "Sector 30", type: "CBSE", rating: 4.6, ratingRank: 1, boardResults: "98.5%", boardRank: 1, safetyRating: 4.4, fees: 280000, admitAge: "4+", ratio: "25:1", phone: "+91-120-xxxxxx", website: "dpsnoida.org", lat: 28.5746, lng: 77.3699, reviewsCount: 950, gender: "", color: "#2ca02c" },
+            { id: "STEPSTEP", city: "noida", name: "Step by Step School", location: "Sector 8", type: "CBSE", rating: 4.5, ratingRank: 2, boardResults: "98.0%", boardRank: 2, safetyRating: 4.3, fees: 320000, admitAge: "4+", ratio: "24:1", phone: "+91-120-xxxxxx", website: "stepbystep.org", lat: 28.5756, lng: 77.3356, reviewsCount: 880, gender: "", color: "#2ca02c" },
+            { id: "APEEJAY", city: "noida", name: "Apeejay School, Noida", location: "Sector 62", type: "CBSE", rating: 4.4, ratingRank: 3, boardResults: "97.2%", boardRank: 3, safetyRating: 4.2, fees: 240000, admitAge: "5+", ratio: "26:1", phone: "+91-120-xxxxxx", website: "apeejay.org", lat: 28.4749, lng: 77.5065, reviewsCount: 820, gender: "", color: "#2ca02c" },
+            { id: "RYANNOIDA", city: "noida", name: "Ryan International School", location: "Sector 31", type: "CBSE", rating: 4.3, ratingRank: 4, boardResults: "96.8%", boardRank: 4, safetyRating: 4.1, fees: 280000, admitAge: "4+", ratio: "26:1", phone: "+91-120-xxxxxx", website: "ryan.org", lat: 28.5719, lng: 77.3945, reviewsCount: 750, gender: "", color: "#2ca02c" },
+            { id: "CAMBNOIDA", city: "noida", name: "Cambridge School, Noida", location: "Sector 45", type: "CBSE/Cambridge", rating: 4.2, ratingRank: 5, boardResults: "97.0%", boardRank: 5, safetyRating: 4.2, fees: 350000, admitAge: "4+", ratio: "22:1", phone: "+91-120-xxxxxx", website: "cambridge.org", lat: 28.5320, lng: 77.3877, reviewsCount: 680, gender: "", color: "#17a2b8" },
+            { id: "AMITY", city: "noida", name: "Amity International School", location: "Sector 46", type: "CBSE", rating: 4.2, ratingRank: 6, boardResults: "96.5%", boardRank: 6, safetyRating: 4.0, fees: 300000, admitAge: "4+", ratio: "24:1", phone: "+91-120-xxxxxx", website: "amity.org", lat: 28.5290, lng: 77.3754, reviewsCount: 620, gender: "", color: "#2ca02c" },
+            { id: "IGS", city: "noida", name: "Indraprastha Global School", location: "Sector 15", type: "CBSE", rating: 4.1, ratingRank: 7, boardResults: "96.0%", boardRank: 7, safetyRating: 3.9, fees: 320000, admitAge: "4+", ratio: "22:1", phone: "+91-120-xxxxxx", website: "igs.org", lat: 28.6123, lng: 77.3197, reviewsCount: 560, gender: "", color: "#2ca02c" },
+            { id: "VEGA", city: "noida", name: "Vega School", location: "Sector 51", type: "CBSE/IB", rating: 4.0, ratingRank: 8, boardResults: "97.2%", boardRank: 2, safetyRating: 4.2, fees: 480000, admitAge: "3+", ratio: "20:1", phone: "+91-120-xxxxxx", website: "vegaschool.org", lat: 28.5047, lng: 77.4127, reviewsCount: 500, gender: "", color: "#1f77b4" },
+            { id: "STXAVIER", city: "noida", name: "St. Xavier's School", location: "Sector 9", type: "CBSE", rating: 3.9, ratingRank: 9, boardResults: "95.5%", boardRank: 8, safetyRating: 3.8, fees: 260000, admitAge: "4+", ratio: "25:1", phone: "+91-120-xxxxxx", website: "stxavier.org", lat: 28.5975, lng: 77.3297, reviewsCount: 450, gender: "", color: "#2ca02c" },
+            { id: "SHIVNADAR", city: "noida", name: "Shiv Nadar School, Noida", location: "Sector 168", type: "CBSE", rating: 3.8, ratingRank: 10, boardResults: "96.2%", boardRank: 9, safetyRating: 4.1, fees: 420000, admitAge: "4+", ratio: "20:1", phone: "+91-120-xxxxxx", website: "shivnadar.org", lat: 28.3725, lng: 77.5891, reviewsCount: 400, gender: "", color: "#2ca02c" },
+
+            // GURUGRAM
+            { id: "SNGUR", city: "gurugram", name: "Shiv Nadar School, Gurugram", location: "Sector 49", type: "CBSE/IB", rating: 4.6, ratingRank: 1, boardResults: "98.8%", boardRank: 1, safetyRating: 4.5, fees: 650000, admitAge: "3+", ratio: "18:1", phone: "+91-124-xxxxxx", website: "snsgurugram.org", lat: 28.4735, lng: 77.0649, reviewsCount: 920, gender: "", color: "#1f77b4" },
+            { id: "MRIS", city: "gurugram", name: "Manav Rachna International School", location: "Sector 51", type: "CBSE/IB", rating: 4.5, ratingRank: 2, boardResults: "98.0%", boardRank: 2, safetyRating: 4.3, fees: 480000, admitAge: "3+", ratio: "20:1", phone: "+91-124-xxxxxx", website: "manav.org", lat: 28.4618, lng: 77.0649, reviewsCount: 850, gender: "", color: "#1f77b4" },
+            { id: "KIIT", city: "gurugram", name: "KIIT World School", location: "Sector 46", type: "CBSE/Cambridge", rating: 4.5, ratingRank: 3, boardResults: "97.5%", boardRank: 3, safetyRating: 4.2, fees: 400000, admitAge: "4+", ratio: "18:1", phone: "+91-124-xxxxxx", website: "kiitworldschool.org", lat: 28.4547, lng: 77.0754, reviewsCount: 820, gender: "", color: "#17a2b8" },
+            { id: "NAVYA", city: "gurugram", name: "The Navyandhra School", location: "Sector 49", type: "CBSE", rating: 4.4, ratingRank: 4, boardResults: "97.0%", boardRank: 4, safetyRating: 4.1, fees: 320000, admitAge: "4+", ratio: "20:1", phone: "+91-124-xxxxxx", website: "navyandhra.org", lat: 28.4735, lng: 77.0649, reviewsCount: 780, gender: "", color: "#2ca02c" },
+            { id: "PATHWAYS", city: "gurugram", name: "Pathways School, Gurugram", location: "Sector 48", type: "IB", rating: 4.3, ratingRank: 5, boardResults: "98.5%", boardRank: 1, safetyRating: 4.4, fees: 720000, admitAge: "3+", ratio: "15:1", phone: "+91-124-xxxxxx", website: "pathwaysschool.org", lat: 28.4584, lng: 77.0641, reviewsCount: 720, gender: "", color: "#1f77b4" },
+            { id: "SHRIRAM", city: "gurugram", name: "Shriram Moulsari School", location: "Aravali", type: "ICSE/IB/Cambridge", rating: 4.3, ratingRank: 6, boardResults: "98.2%", boardRank: 2, safetyRating: 4.3, fees: 640000, admitAge: "3+", ratio: "16:1", phone: "+91-124-xxxxxx", website: "shrirammoulsari.org", lat: 28.4532, lng: 77.1224, reviewsCount: 680, gender: "", color: "#d62728" },
+            { id: "BLUEBELLS", city: "gurugram", name: "The Blue Bells School", location: "Sector 50", type: "CBSE", rating: 4.2, ratingRank: 7, boardResults: "96.8%", boardRank: 5, safetyRating: 4.0, fees: 380000, admitAge: "4+", ratio: "20:1", phone: "+91-124-xxxxxx", website: "bluebells.org", lat: 28.4544, lng: 77.0762, reviewsCount: 620, gender: "", color: "#2ca02c" },
+            { id: "GDGOENKA", city: "gurugram", name: "GD Goenka World School", location: "Sohna Road", type: "IB/Cambridge", rating: 4.1, ratingRank: 8, boardResults: "97.8%", boardRank: 3, safetyRating: 4.2, fees: 580000, admitAge: "3+", ratio: "18:1", phone: "+91-124-xxxxxx", website: "gdgoenka.org", lat: 28.3978, lng: 77.0435, reviewsCount: 560, gender: "", color: "#17a2b8" },
+            { id: "ODM", city: "gurugram", name: "ODM International School", location: "Sector 41", type: "CBSE",
+  rating: 4.0, ratingRank: 9, boardResults: "96.2%", boardRank: 6, safetyRating: 3.9, fees: 340000,
+  admitAge: "4+", ratio: "22:1", phone: "+91-124-xxxxxx", website: "odmschool.org", lat: 28.4639,
+  lng: 77.0436, reviewsCount: 500, gender: "", color: "#2ca02c" },
+            { id: "SATYA", city: "gurugram", name: "Satya School", location: "Sector 42", type: "CBSE", rating: 3.9, ratingRank: 10, boardResults: "95.8%", boardRank: 7, safetyRating: 3.8, fees: 280000, admitAge: "4+", ratio: "24:1", phone: "+91-124-xxxxxx", website: "satyaschool.org", lat: 28.4619, lng: 77.0514, reviewsCount: 450, gender: "", color: "#2ca02c" },
         ];
 
-        function initMap() {
-            // Your existing Google Maps code
-        }
-
         function filterAndSortSchools() {
-            const searchVal = document.getElementById('searchInput').value.trim().toLowerCase();
-            const cityVal = document.getElementById('cityFilter').value.trim().toLowerCase();
-            const typeVal = document.getElementById('filterType').value.trim().toLowerCase();
-            const sortVal = document.getElementById('sortOptions').value;
+            const searchVal = document.getElementById("searchInput").value.trim().toLowerCase();
+            const cityVal = document.getElementById("cityFilter").value.trim().toLowerCase();
+            const typeVal = document.getElementById("filterType").value.trim().toLowerCase();
+            const sortVal = document.getElementById("sortOptions").value;
 
             filteredSchools = schoolsData.filter(s => {
                 const name = s.name.toLowerCase();
                 const loc = s.location.toLowerCase();
                 const type = s.type.toLowerCase();
-                return (!searchVal || name.includes(searchVal) || loc.includes(searchVal)) &&
-                       (!cityVal || s.city === cityVal) &&
-                       (!typeVal || type.includes(typeVal));
+
+                return (!searchVal || name.includes(searchVal) || loc.includes(searchVal))
+                       && (!cityVal || (s.city && s.city.toLowerCase() === cityVal))
+                       && (!typeVal || type.includes(typeVal));
             });
 
             // Sort
-            if (sortVal === 'rating') {
+            if (sortVal === "rating") {
                 filteredSchools.sort((a, b) => b.rating - a.rating);
-            } else if (sortVal === 'fees-low') {
+            } else if (sortVal === "fees-low") {
                 filteredSchools.sort((a, b) => a.fees - b.fees);
-            } else if (sortVal === 'fees-high') {
+            } else if (sortVal === "fees-high") {
                 filteredSchools.sort((a, b) => b.fees - a.fees);
-            } else if (sortVal === 'safety') {
+            } else if (sortVal === "safety") {
                 filteredSchools.sort((a, b) => b.safetyRating - a.safetyRating);
             }
 
             loadedCount = 0;
             updateStats();
             renderBatch(true);
+	    updateMapMarkers();
         }
 
-        // Rest of your existing JavaScript functions remain exactly the same...
-        // (updateStats, renderBatch, openSchoolModal, event listeners, etc.)
+        function updateStats() {
+            const totalSchools = schoolsData.length;
+            const filteredCount = filteredSchools.length;
+            const avgRating = (filteredSchools.reduce((sum, s) => sum + s.rating, 0) / filteredCount || 0).toFixed(1);
+            const avgFees = Math.round(filteredSchools.reduce((sum, s) => sum + s.fees, 0) / filteredCount || 0);
+            const avgBoardResults = filteredSchools
+                .filter(s => s.boardResults !== "N/A")
+                .reduce((sum, s) => {
+                    const val = parseFloat(s.boardResults);
+                    return sum + (isNaN(val) ? 0 : val);
+                }, 0) / filteredSchools.filter(s => s.boardResults !== "N/A").length || 0;
 
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            filterAndSortSchools();
-            // Your existing event listeners
-        });
+            document.getElementById("filteredCount").textContent = filteredCount;
+            document.getElementById("avgRating").textContent = avgRating;
+            document.getElementById("avgFees").textContent = "â‚¹" + (avgFees / 100000).toFixed(1) + "L";
+            document.getElementById("boardResults").textContent = avgBoardResults.toFixed(1) + "%";
+        }
+
+        function renderBatch(reset = false) {
+  const container = document.getElementById("schoolsContainer");
+
+  if (reset) {
+    container.innerHTML = "";
+  }
+
+            if (filteredSchools.length === 0) {
+                container.innerHTML = '<div class="no-results"><p>No schools found matching your criteria.</p></div>';
+                document.getElementById("loadMoreBtn").style.display = "none";
+                document.getElementById("noMoreMsg").style.display = "none";
+                return;
+            }
+
+            const end = Math.min(loadedCount + INITIAL_LOAD, filteredSchools.length);
+            const batch = filteredSchools.slice(loadedCount, end);
+
+            batch.forEach(school => {
+                const safetyStars = "â˜…".repeat(Math.floor(school.safetyRating)) + (school.safetyRating % 1 >= 0.5 ? "Â½" : "");
+                const card = document.createElement("div");
+                card.className = "school-card";
+                card.innerHTML = `
+                    <div class="school-card-header">
+                        <div>
+                            <span class="badge-city">${school.city}</span>
+                            <span class="board-badge">${school.type}</span>
+                        </div>
+                        <div class="school-rank">#${school.ratingRank}</div>
+                    </div>
+                    <div class="school-card-body">
+                        <div class="school-name">${school.name}</div>
+                        <div class="school-info">
+                            <div class="info-item">
+                                <div class="info-label">Location</div>
+                                <div class="info-value">${school.location}</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Rating</div>
+                                <div class="info-value"><span class="rating-badge">â˜… ${school.rating}</span></div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Annual Fees</div>
+                                <div class="fees-badge">â‚¹${(school.fees / 100000).toFixed(1)}L</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Board Results</div>
+                                <div class="info-value">${school.boardResults}</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Safety Rating</div>
+                                <div class="safety-indicator">
+                                    <span class="safety-stars">${safetyStars}</span>
+                                    <span class="info-value">${school.safetyRating}</span>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Reviews</div>
+                                <div class="info-value">${school.reviewsCount}+</div>
+                            </div>
+                        </div>
+                        <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee;">
+                            <small style="color: #999;">
+                                <strong>Ratio:</strong> ${school.ratio} | <strong>Phone:</strong> ${school.phone} | <strong>Website:</strong> ${school.website}
+                            </small>
+                        </div>
+                    </div>
+                `;
+card.addEventListener("click", () => openSchoolModal(school));   // NEW
+                container.appendChild(card);
+            });
+
+            loadedCount = end;
+
+            if (loadedCount >= filteredSchools.length) {
+                document.getElementById("loadMoreBtn").style.display = "none";
+                document.getElementById("noMoreMsg").style.display = "block";
+            } else {
+                document.getElementById("loadMoreBtn").style.display = "block";
+                document.getElementById("noMoreMsg").style.display = "none";
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+  filterAndSortSchools();
+
+  document.getElementById("searchInput").addEventListener("input", filterAndSortSchools);
+  document.getElementById("cityFilter").addEventListener("change", filterAndSortSchools);
+  document.getElementById("filterType").addEventListener("change", filterAndSortSchools);
+  document.getElementById("sortOptions").addEventListener("change", filterAndSortSchools);
+  document.getElementById("loadMoreBtn").addEventListener("click", () => {
+    renderBatch(false);
+  });
+
+  // NEW: reset button
+  document.getElementById("resetFiltersBtn").addEventListener("click", () => {
+    document.getElementById("searchInput").value = "";
+    document.getElementById("cityFilter").value = "";
+    document.getElementById("filterType").value = "";
+    document.getElementById("sortOptions").value = "rating";  // default option value
+    filterAndSortSchools();
+  });
+});
+function openSchoolModal(school) {
+  // basic fields
+  document.getElementById("modalSchoolName").textContent = school.name;
+  document.getElementById("modalCity").textContent = school.city;
+  document.getElementById("modalBoard").textContent = school.type;
+  document.getElementById("modalLocation").textContent = school.location;
+  document.getElementById("modalRating").textContent = `â˜… ${school.rating}`;
+  document.getElementById("modalReviews").textContent = `${school.reviewsCount}+ reviews`;
+
+  // numeric / formatted fields
+  document.getElementById("modalFees").textContent =
+    "â‚¹" + (school.fees / 100000).toFixed(1) + "L";
+  document.getElementById("modalBoardResults").textContent = school.boardResults;
+  document.getElementById("modalSafety").textContent = school.safetyRating;
+
+  // other details
+  document.getElementById("modalAdmitAge").textContent = school.admitAge || "-";
+  document.getElementById("modalRatio").textContent = school.ratio || "-";
+  document.getElementById("modalPhone").textContent = school.phone || "-";
+
+  const website = school.website || "";
+const websiteLink = document.getElementById("modalWebsiteLink");
+
+if (website) {
+  const url = website.startsWith("http") ? website : "https://" + website;
+  websiteLink.href = url;
+  websiteLink.textContent = website;
+  websiteLink.target = "_blank";       // open in new tab
+  websiteLink.rel = "noopener noreferrer";
+} else {
+  websiteLink.href = "#";
+  websiteLink.textContent = "-";
+  websiteLink.removeAttribute("target");
+  websiteLink.removeAttribute("rel");
+}
+
+
+  // show Bootstrap modal
+  const modalEl = document.getElementById("schoolModal");
+  const modal = new bootstrap.Modal(modalEl);
+  modal.show();
+}
     </script>
+<script 
+src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+</script>
+<!-- FOOTER SECTION - Add this as your footer -->
+<footer style="background: #f8f9fa; padding: 30px 20px; text-align: center; border-top: 2px solid #e9ecef; margin-top: 50px;">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    <p style="margin: 0 0 15px 0; font-size: 16px; color: #495057;">Â© 2025 WIBest - Which Is Best. Helping parents choose the best schools.</p>
+    <a href="#" id="contactLink" style="color: #007bff; text-decoration: none; font-weight: 600; font-size: 16px; padding: 10px 20px; border: 2px solid #007bff; border-radius: 25px; transition: all 0.3s ease;">ðŸ“§ Contact / Feedback</a>
+  </div>
+</footer>
+
+<!-- CONTACT FORM - Insert immediately AFTER the footer above -->
+<section id="contactFormSection" style="display:none; background: white; max-width: 600px; margin: 30px auto; padding: 30px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid #e9ecef;">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+    <h2 style="margin: 0; color: #212529; font-size: 24px;">ðŸ“ Contact / Feedback</h2>
+    <a href="#" id="closeForm" style="color: #dc3545; text-decoration: none; font-weight: 600;">âœ• Close</a>
+  </div>
+  <p style="color: #6c757d; margin: 0 0 25px 0;">Suggest corrections or new schools. We value your feedback!</p>
+  
+  <form action="mailto:support@wibest.in" method="POST" enctype="text/plain">
+    <div style="margin-bottom: 20px;">
+      <label for="name" style="display: block; margin-bottom: 8px; font-weight: 600; color: #212529;">ðŸ‘¤ Your Name:</label>
+      <input type="text" id="name" name="name" required style="width: 100%; padding: 12px 15px; border: 2px solid #e9ecef; border-radius: 8px; font-size: 16px; transition: border-color 0.3s ease; box-sizing: border-box;" />
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <label for="email" style="display: block; margin-bottom: 8px; font-weight: 600; color: #212529;">ðŸ“§ Your Email:</label>
+      <input type="email" id="email" name="email" required style="width: 100%; padding: 12px 15px; border: 2px solid #e9ecef; border-radius: 8px; font-size: 16px; transition: border-color 0.3s ease; box-sizing: border-box;" />
+    </div>
+
+    <div style="margin-bottom: 25px;">
+      <label for="message" style="display: block; margin-bottom: 8px; font-weight: 600; color: #212529;">ðŸ’¬ Your Message:</label>
+      <textarea id="message" name="message" rows="6" required style="width: 100%; padding: 12px 15px; border: 2px solid #e9ecef; border-radius: 8px; font-size: 16px; resize: vertical; transition: border-color 0.3s ease; box-sizing: border-box; font-family: inherit;"></textarea>
+    </div>
+
+    <div style="display: flex; gap: 15px; justify-content: flex-end;">
+      <input type="reset" value="Clear" style="padding: 12px 24px; background: #6c757d; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: 600; transition: background 0.3s ease;" />
+      <input type="submit" value="Send Feedback" style="padding: 12px 24px; background: #007bff; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: 600; transition: background 0.3s ease;" />
+    </div>
+  </form>
+</section>
+
+<!-- JAVASCRIPT - Insert as the VERY LAST thing before </body> -->
+<script>
+  const contactLink = document.getElementById('contactLink');
+  const contactFormSection = document.getElementById('contactFormSection');
+  const closeForm = document.getElementById('closeForm');
+
+  function toggleContactForm() {
+    if (contactFormSection.style.display === 'none' || contactFormSection.style.display === '') {
+      contactFormSection.style.display = 'block';
+      contactLink.innerHTML = 'âœ• Hide Form';
+      contactLink.style.background = '#dc3545';
+      contactLink.style.color = 'white';
+      contactFormSection.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      contactFormSection.style.display = 'none';
+      contactLink.innerHTML = 'Contact / Feedback';
+      contactLink.style.background = 'transparent';
+      contactLink.style.color = '#007bff';
+      contactLink.style.border = '2px solid #007bff';
+    }
+  }
+
+  contactLink.addEventListener('click', function(event) {
+    event.preventDefault();
+    toggleContactForm();
+  });
+
+  closeForm.addEventListener('click', function(event) {
+    event.preventDefault();
+    toggleContactForm();
+  });
+
+  // Form input focus effects
+  document.querySelectorAll('input, textarea').forEach(input => {
+    input.addEventListener('focus', function() {
+      this.style.borderColor = '#007bff';
+      this.style.boxShadow = '0 0 0 3px rgba(0,123,255,0.1)';
+    });
+    input.addEventListener('blur', function() {
+      this.style.borderColor = '#e9ecef';
+      this.style.boxShadow = 'none';
+    });
+  });
+</script>	
 </body>
 </html>
