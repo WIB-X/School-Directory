@@ -682,10 +682,11 @@
                             <input type="text" class="form-control" id="feedbackContact"
                                    placeholder="Email / phone if you want us to reach you">
                         </div>
-                        <button type="button" id="feedbackSubmit"
-                                class="btn btn-sm btn-primary">
-                            Submit feedback
-                        </button>
+                        <button type="button"
+        class="btn btn-sm btn-primary"
+        onclick="openReviewForm()">
+  Submit feedback
+</button>
                         <span id="feedbackStatus" class="ms-2 small text-success" style="display:none;">
                             Thank you! Your feedback is noted.
                         </span>
@@ -1049,6 +1050,19 @@
                 }, 2500);
             });
         });
+        function openReviewForm() {
+  const nameEl = document.getElementById("modalSchoolName");
+  const cityEl = document.getElementById("modalCity");
+
+  const schoolName = nameEl ? nameEl.textContent.trim() : "";
+  const city = cityEl ? cityEl.textContent.trim() : "";
+
+  const url =
+    "review.html?school=" + encodeURIComponent(schoolName) +
+    "&city=" + encodeURIComponent(city);
+
+  window.open(url, "_blank");
+}
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
