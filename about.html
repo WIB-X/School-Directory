@@ -12,13 +12,40 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About WIBest - Which Is Best</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --primary:#2563eb; }
+    * { margin:0; padding:0; box-sizing:border-box; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      background: #f8fafc;
+      font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+      line-height:1.6;
+      color:#333;
+      background:#f8fafc;
+      padding-top:90px;
+    }
+    .navbar {
+      background:linear-gradient(135deg,#2563eb,#1d4ed8);
+      box-shadow:0 10px 25px rgba(0,0,0,0.1);
+    }
+    .navbar-brand img {
+      width:40px; height:40px; border-radius:10px; margin-right:10px;
+    }
+    .nav-link {
+      color:white !important;
+      font-weight:500;
+      padding:12px 20px !important;
+      border-radius:25px;
+    }
+    .nav-link.active {
+      background:rgba(255,255,255,0.2);
+    }
+    .hero-section {
+      background:linear-gradient(135deg,#2563eb,#3b82f6);
+      color:white;
+      padding:80px 0 50px 0;
+      margin-bottom:30px;
     }
   </style>
 </head>
@@ -30,45 +57,60 @@
 
   <!-- NAVIGATION -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img src="logo.png" alt="WIBest logo">
-                <span style="font-size: 22px; font-weight: 700;">WIBest</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="schools.html">Schools</a></li>
-                    <li class="nav-item"><a class="nav-link" href="colleges.html">Colleges</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="logo.png" alt="WIBest logo">
+        <span style="font-size: 22px; font-weight: 700;">WIBest</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="schools.html">Schools</a></li>
+          <li class="nav-item"><a class="nav-link" href="colleges.html">Colleges</a></li>
+          <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-  <!-- ABOUT CONTENT -->
-  <section style="max-width: 900px; margin: 60px auto 30px auto; padding: 40px; background: white; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.1);">
-    <h1 style="color: #212529; font-size: 36px; margin-bottom: 20px; text-align: center;">About WIBest – Which Is Best</h1>
-    <div style="font-size: 18px; line-height: 1.7; color: #495057;">
-      <p style="margin-bottom: 25px;">
-        WIBest started with one simple goal: help people make better choices with clear, unbiased information. Today it focuses on schools and colleges, but the larger vision is much broader. Over time, WIBest aims to become a single place where you can compare many different things in your life – from education to services and products – and quickly see which options truly stand out.
-      </p>
-      <p style="margin-bottom: 25px;">
-        The idea is to combine structured data, transparent criteria, and real user input to highlight the best choices in each category. Instead of being overwhelmed by endless lists, WIBest will focus on surfacing a curated “which is best” short‑list that stays independent, neutral, and easy to understand.
-      </p>
-      <p style="margin-bottom: 0;">
-        We remain neutral and independent, with no affiliations or sponsorships influencing our rankings. Our goal is to offer a trustworthy platform that truly helps you decide which is best.
-      </p>
+  <!-- HERO -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-8">
+          <h1 class="mb-3">About WIBest – Which Is Best</h1>
+          <p class="lead mb-0">
+            WIBest helps people compare options and quickly see which ones stand out, starting with schools and colleges.
+          </p>
+        </div>
+      </div>
     </div>
   </section>
 
+  <!-- ABOUT CONTENT -->
+  <div class="container mb-4">
+    <div style="background: white; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.06); padding: 30px;">
+      <div style="font-size: 18px; line-height: 1.7; color: #495057;">
+        <p style="margin-bottom: 25px;">
+          WIBest started with one simple goal: help people make better choices with clear, unbiased information. Today it focuses on schools and colleges, but the larger vision is much broader. Over time, WIBest aims to become a single place where you can compare many different things in your life – from education to services and products – and quickly see which options truly stand out.
+        </p>
+        <p style="margin-bottom: 25px;">
+          The idea is to combine structured data, transparent criteria, and real user input to highlight the best choices in each category. Instead of being overwhelmed by endless lists, WIBest will focus on surfacing a curated “which is best” short‑list that stays independent, neutral, and easy to understand.
+        </p>
+        <p style="margin-bottom: 0;">
+          We remain neutral and independent, with no affiliations or sponsorships influencing our rankings. Our goal is to offer a trustworthy platform that truly helps you decide which is best.
+        </p>
+      </div>
+    </div>
+  </div>
+
   <!-- SUPPORT WIBEST (RAZORPAY DONATION) -->
-  <section style="padding: 40px 0 60px 0;">
-    <div style="max-width: 900px; margin: 0 auto;">
+  <section style="padding: 0 0 60px 0;">
+    <div class="container">
       <div style="background: white; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); padding: 30px 30px 35px 30px;">
         <h2 style="margin-bottom: 10px; font-size: 26px; color: #111827;">Support WIBest</h2>
         <p style="color: #6b7280; margin-bottom: 25px; font-size: 15px;">
@@ -105,8 +147,8 @@
     </div>
   </section>
 
-  <!-- FOOTER PLACEHOLDER -->
-  <!-- Paste your existing footer + contact form HTML from index.html here -->
+  <!-- Optional footer (copy from index if needed) -->
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
