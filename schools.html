@@ -817,15 +817,21 @@ function openSchoolModal(school) {
   document.getElementById("modalPhone").textContent = school.phone || "-";
 
   const website = school.website || "";
-  const websiteLink = document.getElementById("modalWebsiteLink");
-  if (website) {
-    const url = website.startsWith("http") ? website : "https://" + website;
-    websiteLink.href = url;
-    websiteLink.textContent = website;
-  } else {
-    websiteLink.href = "#";
-    websiteLink.textContent = "-";
-  }
+const websiteLink = document.getElementById("modalWebsiteLink");
+
+if (website) {
+  const url = website.startsWith("http") ? website : "https://" + website;
+  websiteLink.href = url;
+  websiteLink.textContent = website;
+  websiteLink.target = "_blank";       // open in new tab
+  websiteLink.rel = "noopener noreferrer";
+} else {
+  websiteLink.href = "#";
+  websiteLink.textContent = "-";
+  websiteLink.removeAttribute("target");
+  websiteLink.removeAttribute("rel");
+}
+
 
   // show Bootstrap modal
   const modalEl = document.getElementById("schoolModal");
