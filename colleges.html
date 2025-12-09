@@ -1,49 +1,394 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google Tag Manager -->
+    <script>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TQT9FP2S');
+    </script>
+    <!-- End Google Tag Manager -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Engineering Colleges in India - WIBest</title>
+    <title>WIB - College Directory</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
     <style>
         :root {
-            --primary-color: #2563eb;
-            --secondary-color: #64748b;
-            --success-color: #10b981;
-            --warning-color: #f59e0b;
-            --danger-color: #ef4444;
-            --light-bg: #f8fafc;
-            --card-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            --border-radius: 12px;
+            --primary: #2563eb;
+            --success: #2ca02c;
+            --danger: #d62728;
+            --warning: #ff7f0e;
+            --info: #17a2b8;
         }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--light-bg); color: #1e293b; }
-        .navbar { background: linear-gradient(135deg, var(--primary-color), #1d4ed8); box-shadow: var(--card-shadow); }
-        .navbar-brand img { width: 40px; height: 40px; border-radius: 10px; margin-right: 10px; }
-        .nav-link { color: white !important; font-weight: 500; transition: color 0.3s; }
-        .nav-link:hover { color: #bfdbfe !important; }
-        .hero-section { background: linear-gradient(135deg, var(--primary-color), #3b82f6); color: white; padding: 80px 0; margin-bottom: 40px; }
-        .hero-section h1 { font-size: 3rem; font-weight: 700; margin-bottom: 20px; }
-        .filter-section { background: white; padding: 30px; border-radius: var(--border-radius); box-shadow: var(--card-shadow); margin-bottom: 30px; }
-        .college-card { background: white; border-radius: var(--border-radius); box-shadow: var(--card-shadow); transition: transform 0.3s, box-shadow 0.3s; border: none; overflow: hidden; }
-        .college-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
-        .college-header { background: linear-gradient(135deg, var(--primary-color), #1d4ed8); color: white; padding: 20px; }
-        .badge-engineering { background: var(--success-color); color: white; padding: 6px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
-        .college-rank { background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 25px; font-weight: 700; font-size: 1.1rem; }
-        .college-name { font-size: 1.4rem; font-weight: 700; margin-bottom: 12px; color: #1e293b; }
-        .info-item { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.95rem; }
-        .info-label { font-weight: 600; color: var(--secondary-color); }
-        .rating-stars { color: var(--warning-color); }
-        .btn-primary { background: var(--primary-color); border: none; border-radius: var(--border-radius); padding: 10px 24px; font-weight: 600; }
-        .btn-primary:hover { background: #1d4ed8; transform: translateY(-1px); }
-        .load-more { text-align: center; margin: 40px 0; }
-        .modal-content { border-radius: var(--border-radius); border: none; box-shadow: var(--card-shadow); }
-        .modal-header { background: var(--primary-color); color: white; border-radius: var(--border-radius) var(--border-radius) 0 0; }
-        @media (max-width: 768px) { .hero-section h1 { font-size: 2rem; } }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f8fafc;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding-top: 90px;
+        }
+
+        .filters {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .filter-group {
+            margin-bottom: 15px;
+        }
+
+        .filter-group label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            display: block;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-control, .form-select {
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 0.2rem rgba(31, 119, 180, 0.25);
+        }
+
+        .school-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            border-left: 5px solid var(--primary);
+        }
+
+        .school-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .school-card-header {
+            background: linear-gradient(135deg, var(--primary) 0%, #1a5fa0 100%);
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .school-rank {
+            background: rgba(255, 255, 255, 0.3);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .school-card-body {
+            padding: 20px;
+        }
+
+        .school-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .school-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .info-item {
+            font-size: 13px;
+        }
+
+        .info-label {
+            color: #666;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            margin-bottom: 3px;
+        }
+
+        .info-value {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 15px;
+        }
+
+        .rating-badge {
+            display: inline-block;
+            background: #ffc107;
+            color: #333;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .badge-city {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 12px;
+            margin-right: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .board-badge {
+            display: inline-block;
+            background: #e8f4f8;
+            color: var(--primary);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 12px;
+            margin-right: 8px;
+        }
+
+        .safety-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .safety-stars {
+            color: #ffc107;
+            font-size: 14px;
+        }
+
+        .fees-badge {
+            background: #f0f0f0;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            color: var(--danger);
+        }
+
+        .load-more-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .btn-load-more {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 40px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-load-more:hover {
+            background: #1a5fa0;
+            transform: scale(1.05);
+        }
+
+        .btn-load-more:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: scale(1);
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary) 0%, #1a5fa0 100%);
+            color: white;
+            border: none;
+        }
+
+        .modal-header .btn-close {
+            filter: brightness(0) invert(1);
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+        }
+
+        .no-results svg {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+
+        @media (max-width: 768px) {
+            .school-info {
+                grid-template-columns: 1fr;
+            }
+
+            .filters {
+                padding: 15px;
+            }
+
+            .school-card-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+
+        .stats-container {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .stats-item {
+            text-align: center;
+            padding: 15px;
+        }
+
+        .stats-number {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stats-label {
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            margin-top: 5px;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            color: white;
+            padding: 80px 0;
+            margin-bottom: 40px;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero-section .lead {
+            font-size: 1.25rem;
+            opacity: 0.95;
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar-brand img {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            margin-right: 10px;
+        }
+
+        .nav-link {
+            color: white !important;
+            font-weight: 500;
+            padding: 12px 20px !important;
+            border-radius: 25px;
+        }
+
+        .nav-link.active {
+            background: rgba(255,255,255,0.2);
+        }
+
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+            .hero-section {
+                padding: 60px 0;
+            }
+        }
+
+        /* Footer & feedback */
+        footer {
+            background: #0f172a;
+            color: #cbd5f5;
+            padding: 40px 0 20px;
+            margin-top: 40px;
+        }
+
+        footer a {
+            color: #93c5fd;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .feedback-toggle {
+            cursor: pointer;
+            color: #93c5fd;
+            font-size: 0.9rem;
+        }
+
+        #feedbackSection {
+            display: none;
+            margin-top: 15px;
+        }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TQT9FP2S"
+                height="0" width="0"
+                style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="index.html">
@@ -65,342 +410,611 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="hero-section">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-8">
-                    <h1>Top Engineering Colleges Across India</h1>
+                    <h1>Top Colleges Across India</h1>
                     <p class="lead mb-0">
-                        Discover the best engineering colleges with verified ratings and placement details.
+                        Discover the best colleges with verified ratings, placements, fees & infrastructure details.
+                        Find your perfect college match.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="container mt-5 pt-5">
+    <div class="container">
         <!-- Filters -->
-        <div class="filter-section">
-            <div class="row g-3">
+        <div class="filters">
+            <div style="text-align: right; margin-top: 10px;">
+                <button id="resetFiltersBtn" type="button"
+                    style="border: none; background: #f1f3f5; color: #333;
+                           padding: 8px 16px; border-radius: 20px;
+                           font-size: 13px; font-weight: 600; cursor: pointer;">
+                    Reset filters &amp; sort
+                </button>
+            </div>
+            <div class="row">
                 <div class="col-md-3">
-                    <label class="form-label fw-bold">Search Colleges</label>
-                    <input type="text" id="searchInput" class="form-control" placeholder="Search by name or area...">
+                    <div class="filter-group">
+                        <label for="cityFilter">City</label>
+                        <select id="cityFilter" class="form-select">
+                            <option value="">All Cities</option>
+                            <option value="bangalore">Bangalore</option>
+                            <option value="chennai">Chennai</option>
+                            <option value="hyderabad">Hyderabad</option>
+                            <option value="mumbai">Mumbai</option>
+                            <option value="delhi">Delhi</option>
+                            <option value="noida">Noida</option>
+                            <option value="gurugram">Gurugram</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="col-md-2">
-                    <label class="form-label fw-bold">City</label>
-                    <select id="cityFilter" class="form-select">
-                        <option value="">All Cities</option>
-                        <option value="Bangalore">Bangalore</option>
-                        <option value="Delhi">Delhi</option>
-                        <option value="Gurgaon">Gurgaon</option>
-                        <option value="Noida">Noida</option>
-                        <option value="Hyderabad">Hyderabad</option>
-                        <option value="Chennai">Chennai</option>
-                        <option value="Mumbai">Mumbai</option>
-                    </select>
-                </div>
-                <div class="col-md-2">
-                    <label class="form-label fw-bold">Area</label>
-                    <select id="areaFilter" class="form-select">
-                        <option value="">All Areas</option>
-                    </select>
-                </div>
-                <div class="col-md-2">
-                    <label class="form-label fw-bold">Fees (₹Lakh/year)</label>
-                    <select id="feesFilter" class="form-select">
-                        <option value="">All Fees</option>
-                        <option value="low">₹1-2L</option>
-                        <option value="medium">₹2-4L</option>
-                        <option value="high">₹4L+</option>
-                    </select>
-                </div>
+
                 <div class="col-md-3">
-                    <label class="form-label fw-bold">Sort By</label>
-                    <select id="sortFilter" class="form-select">
-                        <option value="rating">Highest Rating</option>
-                        <option value="fees">Lowest Fees</option>
-                        <option value="name">Name A-Z</option>
-                    </select>
+                    <div class="filter-group">
+                        <label for="searchInput">Search College</label>
+                        <input type="text" id="searchInput" class="form-control"
+                               placeholder="College name or location...">
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="filter-group">
+                        <label for="filterType">College Type</label>
+                        <select id="filterType" class="form-select">
+                            <option value="">All Types</option>
+                            <option value="engineering">Engineering</option>
+                            <option value="management">Management</option>
+                            <option value="medical">Medical</option>
+                            <option value="arts">Arts &amp; Science</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="filter-group">
+                        <label for="sortOptions">Sort By</label>
+                        <select id="sortOptions" class="form-select">
+                            <option value="rating">Rating (High to Low)</option>
+                            <option value="fees-low">Fees (Low to High)</option>
+                            <option value="fees-high">Fees (High to Low)</option>
+                            <option value="placement">Placement Rating</option>
+                        </select>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Colleges Grid -->
-        <div class="row" id="collegesGrid">
-            <!-- College cards will be populated by JavaScript -->
+        <!-- Stats -->
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="stats-container">
+                    <div class="row">
+                        <div class="col-6 stats-item">
+                            <div class="stats-number" id="totalColleges">0</div>
+                            <div class="stats-label">Total Colleges</div>
+                        </div>
+                        <div class="col-6 stats-item">
+                            <div class="stats-number" id="totalCities">0</div>
+                            <div class="stats-label">Cities</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="stats-container">
+                    <div class="row">
+                        <div class="col-6 stats-item">
+                            <div class="stats-number" id="avgRating">0.0</div>
+                            <div class="stats-label">Avg Rating</div>
+                        </div>
+                        <div class="col-6 stats-item">
+                            <div class="stats-number" id="avgFees">₹0.0L</div>
+                            <div class="stats-label">Avg Fees</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="stats-container">
+                    <div class="row">
+                        <div class="col-6 stats-item">
+                            <div class="stats-number" id="filteredCount">0</div>
+                            <div class="stats-label">Showing</div>
+                        </div>
+                        <div class="col-6 stats-item">
+                            <div class="stats-number" id="avgPlacement">0.0%</div>
+                            <div class="stats-label">Avg Placement</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- Load More Button -->
-        <div class="load-more">
-            <button id="loadMoreBtn" class="btn btn-primary btn-lg">Load More Colleges</button>
+        <div class="alert alert-warning text-center mb-3" role="alert">
+            Site is under maintenance. Information related to Google Maps will be updated soon.
+        </div>
+
+        <div id="map" style="width:100%;height:40px;border-radius:12px;margin-bottom:20px;display:none;"></div>
+
+        <!-- Colleges Grid -->
+        <div id="collegesContainer"></div>
+
+        <!-- Load More -->
+        <div class="load-more-container">
+            <button id="loadMoreBtn" class="btn-load-more">Load More Colleges</button>
+            <p id="noMoreMsg" style="color: white; margin-top: 20px; display: none;">
+                No more colleges to load
+            </p>
         </div>
     </div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- College Details Modal -->
+    <div class="modal fade" id="collegeModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalCollegeName">College details</h5>
+                    <button type="button" class="btn-close"
+                            data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <span class="badge-city" id="modalCity"></span>
+                        <span class="board-badge" id="modalType"></span>
+                    </div>
 
-    <script>
-        // Complete Engineering Colleges Data - All Major Cities
-        const collegeData = [
-            // BANGALORE (Top 6)
-            {id:1,name:"RV College of Engineering (RVCE)",city:"Bangalore",area:"Mysore Road",rank:"#1",rating:4.6,reviews:2500,fees:"2.5-3.5L",placement:"Avg ₹15L, Highest ₹65L",board:"Engineering"},
-            {id:2,name:"BMS College of Engineering",city:"Bangalore",area:"Basavanagudi",rank:"#2",rating:4.4,reviews:1800,fees:"2-3L",placement:"Avg ₹12L, Highest ₹50L",board:"Engineering"},
-            {id:3,name:"PES University",city:"Bangalore",area:"Banashankari",rank:"#3",rating:4.3,reviews:3200,fees:"3.5-4.5L",placement:"Avg ₹14L, Highest ₹60L",board:"Engineering"},
-            {id:4,name:"MS Ramaiah Institute of Technology (MSRIT)",city:"Bangalore",area:"MSR Nagar",rank:"#4",rating:4.2,reviews:4500,fees:"2.5-4L",placement:"Avg ₹11L, Highest ₹52L",board:"Engineering"},
-            {id:5,name:"Dayananda Sagar College of Engineering",city:"Bangalore",area:"Kumaraswamy",rank:"#5",rating:4.1,reviews:2800,fees:"2-3.5L",placement:"Avg ₹10L, Highest ₹42L",board:"Engineering"},
-            {id:6,name:"CMR Institute of Technology",city:"Bangalore",area:"Whitefield",rank:"#6",rating:4.0,reviews:1200,fees:"2-3L",placement:"Avg ₹8L, Highest ₹44L",board:"Engineering"},
-
-            // DELHI (Top 6)
-            {id:7,name:"Delhi Technological University (DTU)",city:"Delhi",area:"Rohini",rank:"#1",rating:4.5,reviews:3800,fees:"1.5-2L",placement:"Avg ₹18L, Highest ₹85L",board:"Engineering"},
-            {id:8,name:"Netaji Subhas University of Technology (NSUT)",city:"Delhi",area:"Dwarka",rank:"#2",rating:4.4,reviews:2900,fees:"1.8-2.5L",placement:"Avg ₹16L, Highest ₹72L",board:"Engineering"},
-            {id:9,name:"IIIT Delhi",city:"Delhi",area:"Okhla",rank:"#3",rating:4.3,reviews:2100,fees:"3-4L",placement:"Avg ₹20L, Highest ₹90L",board:"Engineering"},
-            {id:10,name:"IGDTUW",city:"Delhi",area:"Kashmere Gate",rank:"#4",rating:4.2,reviews:1500,fees:"1-1.5L",placement:"Avg ₹12L, Highest ₹45L",board:"Engineering"},
-            {id:11,name:"Jamia Millia Islamia (JMI)",city:"Delhi",area:"Okhla",rank:"#5",rating:4.1,reviews:3400,fees:"1.2-2L",placement:"Avg ₹13L, Highest ₹55L",board:"Engineering"},
-            {id:12,name:"MAIT Delhi",city:"Delhi",area:"Rohini",rank:"#6",rating:4.0,reviews:2200,fees:"2-3L",placement:"Avg ₹9L, Highest ₹38L",board:"Engineering"},
-
-            // GURGAON (Top 4)
-            {id:13,name:"Amity University",city:"Gurgaon",area:"Manesar",rank:"#1",rating:4.2,reviews:1800,fees:"3-4.5L",placement:"Avg ₹10L, Highest ₹48L",board:"Engineering"},
-            {id:14,name:"The NorthCap University",city:"Gurgaon",area:"Sector 23A",rank:"#2",rating:4.0,reviews:1100,fees:"2.5-3.5L",placement:"Avg ₹8L, Highest ₹35L",board:"Engineering"},
-            {id:15,name:"GD Goenka University",city:"Gurgaon",area:"Sohna",rank:"#3",rating:3.9,reviews:900,fees:"2-3L",placement:"Avg ₹7L, Highest ₹30L",board:"Engineering"},
-            {id:16,name:"KR Mangalam University",city:"Gurgaon",area:"Sohna Road",rank:"#4",rating:3.8,reviews:700,fees:"2-2.8L",placement:"Avg ₹6L, Highest ₹28L",board:"Engineering"},
-
-            // NOIDA (Top 4)
-            {id:17,name:"Amity University Noida",city:"Noida",area:"Sector 125",rank:"#1",rating:4.1,reviews:2500,fees:"3-4L",placement:"Avg ₹9L, Highest ₹42L",board:"Engineering"},
-            {id:18,name:"Galgotias University",city:"Noida",area:"Greater Noida",rank:"#2",rating:4.0,reviews:1900,fees:"1.5-2.5L",placement:"Avg ₹7L, Highest ₹32L",board:"Engineering"},
-            {id:19,name:"Bennett University",city:"Noida",area:"Greater Noida",rank:"#3",rating:3.9,reviews:800,fees:"4-5L",placement:"Avg ₹11L, Highest ₹50L",board:"Engineering"},
-            {id:20,name:"Sharda University",city:"Noida",area:"Greater Noida",rank:"#4",rating:3.8,reviews:1400,fees:"2-3L",placement:"Avg ₹6L, Highest ₹25L",board:"Engineering"},
-
-            // HYDERABAD (Top 6)
-            {id:21,name:"IIIT Hyderabad",city:"Hyderabad",area:"Gachibowli",rank:"#1",rating:4.7,reviews:1600,fees:"3.5-4.5L",placement:"Avg ₹25L, Highest ₹110L",board:"Engineering"},
-            {id:22,name:"IIT Hyderabad",city:"Hyderabad",area:"Kandi",rank:"#2",rating:4.6,reviews:1200,fees:"2-2.5L",placement:"Avg ₹22L, Highest ₹95L",board:"Engineering"},
-            {id:23,name:"VIT-AP University (VIT-AP)",city:"Hyderabad",area:"Bachupally",rank:"#3",rating:4.4,reviews:2300,fees:"2.5-3.5L",placement:"Avg ₹12L, Highest ₹55L",board:"Engineering"},
-            {id:24,name:"CBIT Hyderabad",city:"Hyderabad",area:"Gandipet",rank:"#4",rating:4.2,reviews:2800,fees:"1.5-2L",placement:"Avg ₹9L, Highest ₹40L",board:"Engineering"},
-            {id:25,name:"VNR VJIET",city:"Hyderabad",area:"Bachupally",rank:"#5",rating:4.1,reviews:2100,fees:"1.8-2.5L",placement:"Avg ₹8L, Highest ₹36L",board:"Engineering"},
-            {id:26,name:"MLRIT Hyderabad",city:"Hyderabad",area:"Dundigal",rank:"#6",rating:4.0,reviews:1700,fees:"1.2-2L",placement:"Avg ₹7L, Highest ₹32L",board:"Engineering"},
-
-            // CHENNAI (Top 6)
-            {id:27,name:"IIT Madras",city:"Chennai",area:"Adyar",rank:"#1",rating:4.8,reviews:3400,fees:"2-2.5L",placement:"Avg ₹28L, Highest ₹130L",board:"Engineering"},
-            {id:28,name:"Anna University (CEG)",city:"Chennai",area:"Guindy",rank:"#2",rating:4.5,reviews:4500,fees:"1-1.5L",placement:"Avg ₹15L, Highest ₹70L",board:"Engineering"},
-            {id:29,name:"SRM Institute of Science and Technology",city:"Chennai",area:"Kattankulathur",rank:"#3",rating:4.3,reviews:5200,fees:"2.5-4L",placement:"Avg ₹11L, Highest ₹52L",board:"Engineering"},
-            {id:30,name:"VIT Chennai",city:"Chennai",area:"Chennai",rank:"#4",rating:4.2,reviews:3100,fees:"2-3.5L",placement:"Avg ₹10L, Highest ₹48L",board:"Engineering"},
-            {id:31,name:"SSN College of Engineering",city:"Chennai",area:"Kalavakkam",rank:"#5",rating:4.1,reviews:2900,fees:"1.5-2L",placement:"Avg ₹9L, Highest ₹42L",board:"Engineering"},
-            {id:32,name:"Sathyabama Institute",city:"Chennai",area:"Jeppiaar Nagar",rank:"#6",rating:4.0,reviews:2400,fees:"2-3L",placement:"Avg ₹8L, Highest ₹38L",board:"Engineering"},
-
-            // MUMBAI (Top 6)
-            {id:33,name:"IIT Bombay",city:"Mumbai",area:"Powai",rank:"#1",rating:4.9,reviews:4200,fees:"2-2.5L",placement:"Avg ₹32L, Highest ₹150L",board:"Engineering"},
-            {id:34,name:"ICT Mumbai",city:"Mumbai",area:"Matunga",rank:"#2",rating:4.7,reviews:1900,fees:"1.5-2L",placement:"Avg ₹20L, Highest ₹80L",board:"Engineering"},
-            {id:35,name:"VJTI Mumbai",city:"Mumbai",area:"Matunga",rank:"#3",rating:4.5,reviews:3600,fees:"1-1.5L",placement:"Avg ₹16L, Highest ₹75L",board:"Engineering"},
-            {id:36,name:"SPIT Mumbai",city:"Mumbai",area:"Andheri",rank:"#4",rating:4.4,reviews:2800,fees:"1.8-2.5L",placement:"Avg ₹14L, Highest ₹65L",board:"Engineering"},
-            {id:37,name:"DJ Sanghvi College",city:"Mumbai",area:"Vile Parle",rank:"#5",rating:4.3,reviews:3200,fees:"2-3L",placement:"Avg ₹12L, Highest ₹55L",board:"Engineering"},
-            {id:38,name:"Thadomal Shahani",city:"Mumbai",area:"Bandra",rank:"#6",rating:4.2,reviews:2100,fees:"2-2.8L",placement:"Avg ₹10L, Highest ₹45L",board:"Engineering"}
-        ];
-
-        let filteredColleges = [...collegeData];
-        let displayedColleges = [];
-        const collegesPerLoad = 6;
-        let loadedCount = 0;
-
-        // Initialize
-        function init() {
-            populateAreaFilter();
-            renderColleges();
-            setupFilters();
-            setupLoadMore();
-        }
-
-        // Populate area filter dynamically
-        function populateAreaFilter() {
-            const areaSelect = document.getElementById('areaFilter');
-            const areas = [...new Set(collegeData.map(c => c.area))].sort();
-            areas.forEach(area => {
-                const option = document.createElement('option');
-                option.value = area;
-                option.textContent = area;
-                areaSelect.appendChild(option);
-            });
-        }
-
-        // Render colleges
-        function renderColleges() {
-            const grid = document.getElementById('collegesGrid');
-            const collegesToShow = filteredColleges.slice(0, loadedCount + collegesPerLoad);
-            
-            collegesToShow.slice(displayedColleges.length).forEach(college => {
-                const card = createCollegeCard(college);
-                grid.appendChild(card);
-            });
-
-            displayedColleges = collegesToShow;
-            const loadMoreBtn = document.getElementById('loadMoreBtn');
-            loadMoreBtn.style.display = loadedCount + collegesPerLoad >= filteredColleges.length ? 'none' : 'block';
-        }
-
-        // Create college card
-        function createCollegeCard(college) {
-            const card = document.createElement('div');
-            card.className = 'col-lg-4 col-md-6 mb-4';
-            card.innerHTML = `
-                <div class="college-card h-100" data-college-id="${college.id}">
-                    <div class="college-header position-relative">
-                        <div style="height: 120px; background: linear-gradient(135deg, #${Math.floor(Math.random()*16777215).toString(16)}, #${Math.floor(Math.random()*16777215).toString(16)}); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; font-weight: 700;">
-                            ${college.name.split(' ')[0]}
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <div class="info-label">Location</div>
+                            <div class="info-value" id="modalLocation"></div>
                         </div>
-                        <div class="position-absolute top-0 end-0 m-2">
-                            <span class="badge badge-engineering">${college.board}</span>
+                        <div class="col-md-3">
+                            <div class="info-label">Online Rating</div>
+                            <div class="info-value" id="modalRating"></div>
                         </div>
-                        <div class="position-absolute bottom-0 start-0 m-2">
-                            <div class="college-rank">${college.rank}</div>
+                        <div class="col-md-3">
+                            <div class="info-label">Online Reviews</div>
+                            <div class="info-value" id="modalReviews"></div>
                         </div>
                     </div>
-                    <div class="p-4">
-                        <div class="college-name">${college.name}</div>
-                        <div class="info-item">
-                            <span class="info-label">City</span>
-                            <span class="info-value">${college.city}</span>
+
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <div class="info-label">Annual fees</div>
+                            <div class="info-value" id="modalFees"></div>
                         </div>
-                        <div class="info-item">
-                            <span class="info-label">Area</span>
-                            <span class="info-value">${college.area}</span>
+                        <div class="col-md-4">
+                            <div class="info-label">Placement %</div>
+                            <div class="info-value" id="modalPlacement"></div>
                         </div>
-                        <div class="info-item">
-                            <span class="info-label">Fees</span>
-                            <span class="info-value">${college.fees}/year</span>
+                        <div class="col-md-4">
+                            <div class="info-label">Safety rating</div>
+                            <div class="info-value" id="modalSafety"></div>
                         </div>
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="rating-stars me-2">
-                                ${'★'.repeat(Math.floor(college.rating))}${'☆'.repeat(5-Math.floor(college.rating))}
-                            </div>
-                            <span class="fw-bold fs-6">${college.rating}</span>
-                            <span class="text-muted ms-1">(${college.reviews.toLocaleString()}+ reviews)</span>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <div class="info-label">Courses</div>
+                            <div class="info-value" id="modalCourses"></div>
                         </div>
-                        <div class="d-flex gap-2">
-                            <button class="btn btn-outline-primary flex-fill" data-bs-toggle="modal" data-bs-target="#collegeModal" onclick="showCollegeDetails(${college.id})">
-                                View Details
-                            </button>
-                            <button class="btn btn-primary">
-                                <i class="fas fa-external-link-alt me-1"></i>Visit
-                            </button>
+                        <div class="col-md-4">
+                            <div class="info-label">Intake</div>
+                            <div class="info-value" id="modalIntake"></div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="info-label">Phone</div>
+                            <div class="info-value" id="modalPhone"></div>
+                        </div>
+                    </div>
+
+                    <div class="mb-2">
+                        <div class="info-label">Website</div>
+                        <div class="info-value">
+                            <a href="#" id="modalWebsiteLink" target="_blank" rel="noopener"></a>
                         </div>
                     </div>
                 </div>
-            `;
-            return card;
-        }
 
-        // Filter and sort
-        function filterAndSortColleges() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const cityFilter = document.getElementById('cityFilter').value;
-            const areaFilter = document.getElementById('areaFilter').value;
-            const feesFilter = document.getElementById('feesFilter').value;
-            const sortFilter = document.getElementById('sortFilter').value;
-
-            filteredColleges = collegeData.filter(college => {
-                const matchesSearch = college.name.toLowerCase().includes(searchTerm) || college.area.toLowerCase().includes(searchTerm);
-                const matchesCity = !cityFilter || college.city === cityFilter;
-                const matchesArea = !areaFilter || college.area === areaFilter;
-                const matchesFees = !feesFilter || getFeesCategory(college.fees) === feesFilter;
-                return matchesSearch && matchesCity && matchesArea && matchesFees;
-            });
-
-            filteredColleges.sort((a, b) => {
-                switch(sortFilter) {
-                    case 'rating': return b.rating - a.rating;
-                    case 'fees': return getFeesNumeric(a.fees) - getFeesNumeric(b.fees);
-                    case 'name': return a.name.localeCompare(b.name);
-                    default: return 0;
-                }
-            });
-
-            loadedCount = 0;
-            displayedColleges = [];
-            document.getElementById('collegesGrid').innerHTML = '';
-            renderColleges();
-        }
-
-        function getFeesCategory(fees) {
-            if (fees.includes('1-') || parseFloat(fees.split('-')[0]) < 2) return 'low';
-            if (fees.includes('2-4') || parseFloat(fees.split('-')[0]) < 4) return 'medium';
-            return 'high';
-        }
-
-        function getFeesNumeric(fees) {
-            return parseFloat(fees.split('-')[0].replace('₹', '')) || 0;
-        }
-
-        // Setup filters
-        function setupFilters() {
-            document.getElementById('searchInput').addEventListener('input', filterAndSortColleges);
-            ['cityFilter', 'areaFilter', 'feesFilter', 'sortFilter'].forEach(id => {
-                document.getElementById(id).addEventListener('change', filterAndSortColleges);
-            });
-        }
-
-        // Load more
-        function setupLoadMore() {
-            document.getElementById('loadMoreBtn').addEventListener('click', () => {
-                loadedCount += collegesPerLoad;
-                renderColleges();
-            });
-        }
-
-        // College details modal
-        function showCollegeDetails(id) {
-            const college = collegeData.find(c => c.id === id);
-            const modalBody = document.querySelector('#collegeModal .modal-body');
-            modalBody.innerHTML = `
-                <div style="height: 150px; background: linear-gradient(135deg, #${Math.floor(Math.random()*16777215).toString(16)}, #${Math.floor(Math.random()*16777215).toString(16)}); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 700; border-radius: var(--border-radius); margin-bottom: 20px;">
-                    ${college.name.split(' ')[0]}
-                </div>
-                <h5 class="mb-3">${college.name}</h5>
-                <div class="row text-center mb-4">
-                    <div class="col-4">
-                        <div class="fw-bold fs-3 text-primary">${college.rating}</div>
-                        <div class="text-muted small">Rating</div>
-                    </div>
-                    <div class="col-4">
-                        <div class="fw-bold fs-3 text-success">${college.reviews.toLocaleString()}</div>
-                        <div class="text-muted small">Reviews</div>
-                    </div>
-                    <div class="col-4">
-                        <div class="fw-bold fs-3 text-warning">${college.rank}</div>
-                        <div class="text-muted small">Rank</div>
-                    </div>
-                </div>
-                <hr>
-                <div class="row g-3">
-                    <div class="col-md-6">
-                        <strong>City:</strong> ${college.city}<br>
-                        <strong>Area:</strong> ${college.area}<br>
-                        <strong>Annual Fees:</strong> ${college.fees}
-                    </div>
-                    <div class="col-md-6">
-                        <strong>Placement:</strong> ${college.placement}<br>
-                        <strong>Board:</strong> ${college.board}
-                    </div>
-                </div>
-            `;
-        }
-
-        // Modal HTML
-        document.body.insertAdjacentHTML('beforeend', `
-            <div class="modal fade" id="collegeModal" tabindex="-1">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">College Details</h5>
-                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                        </div>
-                        <div class="modal-body">
-                            <!-- Content populated by JS -->
-                        </div>
-                    </div>
+                <div class="modal-footer">
+                    <button type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
-        `);
+        </div>
+    </div>
 
-        init();
+    <!-- Footer + Feedback -->
+    <footer>
+        <div class="container">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <h5>WIBest College Directory</h5>
+                    <p class="mb-1">Helping students discover better colleges across major Indian cities.</p>
+                    <span class="feedback-toggle" id="feedbackToggle">
+                        Have feedback or found an error? Click here.
+                    </span>
+                </div>
+                <div class="col-md-6 text-md-end mt-3 mt-md-0">
+                    <p class="mb-1">
+                        For corrections or listing requests, write to:
+                        <a href="mailto:support@wibest.in">support@wibest.in</a>
+                    </p>
+                    <small>Data is indicative and may not be fully up to date. Please verify with the college website.</small>
+                </div>
+            </div>
+
+            <div id="feedbackSection" class="row">
+                <div class="col-md-8">
+                    <form id="feedbackForm">
+                        <div class="mb-2">
+                            <label class="form-label">College name (optional)</label>
+                            <input type="text" class="form-control" id="feedbackCollege"
+                                   placeholder="Example: IIT Madras, IIM Bangalore">
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label">Your feedback</label>
+                            <textarea class="form-control" id="feedbackText"
+                                      rows="3"
+                                      placeholder="Tell us what's wrong or what we can improve..."></textarea>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label">Contact (optional)</label>
+                            <input type="text" class="form-control" id="feedbackContact"
+                                   placeholder="Email / phone if you want us to reach you">
+                        </div>
+                        <button type="button" id="feedbackSubmit"
+                                class="btn btn-sm btn-primary">
+                            Submit feedback
+                        </button>
+                        <span id="feedbackStatus" class="ms-2 small text-success" style="display:none;">
+                            Thank you! Your feedback is noted.
+                        </span>
+                    </form>
+                </div>
+            </div>
+
+            <div class="text-center mt-3">
+                <small>© 2025 WIBest.in. All rights reserved.</small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Google Maps -->
+    <script async
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2JxO29IjHhWrpmejib4-YcE2fH6s821E&callback=initMap">
     </script>
+
+    <!-- Main Script -->
+    <script>
+        const INITIAL_LOAD = 5;
+        let loadedCount = 0;
+        let filteredColleges = [];
+        let map;
+        let markers = [];
+
+        function initMap() {
+            const center = { lat: 20.5937, lng: 78.9629 };
+            map = new google.maps.Map(document.getElementById("map"), {
+                center,
+                zoom: 5,
+            });
+            updateMapMarkers();
+        }
+
+        function updateMapMarkers() {
+            if (!map) return;
+            markers.forEach(m => m.setMap(null));
+            markers = [];
+            filteredColleges.forEach(c => {
+                if (!c.lat || !c.lng) return;
+                const marker = new google.maps.Marker({
+                    position: { lat: c.lat, lng: c.lng },
+                    map,
+                    title: c.name,
+                });
+                markers.push(marker);
+            });
+            if (markers.length) {
+                const bounds = new google.maps.LatLngBounds();
+                markers.forEach(m => bounds.extend(m.getPosition()));
+                map.fitBounds(bounds);
+                if (markers.length === 1) map.setZoom(13);
+            }
+        }
+
+        // === COLLEGE DATA ===
+        // Replace this array with your actual college objects from College.txt.
+        // Structure expected:
+        // { id, city, name, location, type, rating, ratingRank, placement, placementRank,
+        //   safetyRating, fees, courses, intake, phone, website, lat, lng, reviewsCount }
+        const collegesData = [
+            // Example placeholders – plug your real College.txt data here.
+            // {
+            //   id: "IITM",
+            //   city: "chennai",
+            //   name: "IIT Madras",
+            //   location: "Guindy",
+            //   type: "engineering",
+            //   rating: 4.8,
+            //   ratingRank: 1,
+            //   placement: "98%",
+            //   placementRank: 1,
+            //   safetyRating: 4.6,
+            //   fees: 250000,
+            //   courses: "BTech, MTech",
+            //   intake: "1,000+",
+            //   phone: "+91-44-xxxxxx",
+            //   website: "iitm.ac.in",
+            //   lat: 13.0067,
+            //   lng: 80.2428,
+            //   reviewsCount: 1200
+            // }
+        ];
+
+        function filterAndSortColleges() {
+            const searchVal = document.getElementById("searchInput").value.trim().toLowerCase();
+            const cityVal = document.getElementById("cityFilter").value.trim().toLowerCase();
+            const typeVal = document.getElementById("filterType").value.trim().toLowerCase();
+            const sortVal = document.getElementById("sortOptions").value;
+
+            filteredColleges = collegesData.filter(c => {
+                const name = (c.name || "").toLowerCase();
+                const loc = (c.location || "").toLowerCase();
+                const type = (c.type || "").toLowerCase();
+
+                const matchesSearch =
+                    !searchVal ||
+                    name.includes(searchVal) ||
+                    loc.includes(searchVal);
+
+                const matchesCity =
+                    !cityVal ||
+                    (c.city && c.city.toLowerCase() === cityVal);
+
+                const matchesType =
+                    !typeVal ||
+                    (type && type.includes(typeVal));
+
+                return matchesSearch && matchesCity && matchesType;
+            });
+
+            if (sortVal === "rating") {
+                filteredColleges.sort((a, b) => (b.rating || 0) - (a.rating || 0));
+            } else if (sortVal === "fees-low") {
+                filteredColleges.sort((a, b) => (a.fees || 0) - (b.fees || 0));
+            } else if (sortVal === "fees-high") {
+                filteredColleges.sort((a, b) => (b.fees || 0) - (a.fees || 0));
+            } else if (sortVal === "placement") {
+                filteredColleges.sort((a, b) => {
+                    const pa = parseFloat((a.placement || "0").replace("%", "")) || 0;
+                    const pb = parseFloat((b.placement || "0").replace("%", "")) || 0;
+                    return pb - pa;
+                });
+            }
+
+            loadedCount = 0;
+            updateStats();
+            renderBatch(true);
+            updateMapMarkers();
+        }
+
+        function updateStats() {
+            const totalColleges = collegesData.length;
+            const filteredCount = filteredColleges.length;
+
+            const uniqueCities = new Set(collegesData.map(c => c.city));
+            const totalCities = uniqueCities.size;
+
+            const avgRating =
+                filteredCount === 0
+                    ? 0
+                    : filteredColleges.reduce((sum, c) => sum + (c.rating || 0), 0) / filteredCount;
+
+            const avgFeesRaw =
+                filteredCount === 0
+                    ? 0
+                    : filteredColleges.reduce((sum, c) => sum + (c.fees || 0), 0) / filteredCount;
+
+            const placements = filteredColleges
+                .map(c => parseFloat((c.placement || "").replace("%", "")))
+                .filter(v => !isNaN(v));
+            const avgPlacement =
+                placements.length === 0
+                    ? 0
+                    : placements.reduce((s, v) => s + v, 0) / placements.length;
+
+            document.getElementById("totalColleges").textContent = totalColleges;
+            document.getElementById("totalCities").textContent = totalCities;
+            document.getElementById("filteredCount").textContent = filteredCount;
+            document.getElementById("avgRating").textContent = avgRating.toFixed(1);
+            document.getElementById("avgFees").textContent =
+                "₹" + (avgFeesRaw / 100000).toFixed(1) + "L";
+            document.getElementById("avgPlacement").textContent =
+                avgPlacement.toFixed(1) + "%";
+        }
+
+        function renderBatch(reset = false) {
+            const container = document.getElementById("collegesContainer");
+
+            if (reset) {
+                container.innerHTML = "";
+            }
+
+            if (filteredColleges.length === 0) {
+                container.innerHTML = `
+                    <div class="no-results">
+                        <p>No colleges found matching your criteria.</p>
+                    </div>
+                `;
+                document.getElementById("loadMoreBtn").style.display = "none";
+                document.getElementById("noMoreMsg").style.display = "none";
+                return;
+            }
+
+            const end = Math.min(loadedCount + INITIAL_LOAD, filteredColleges.length);
+            const batch = filteredColleges.slice(loadedCount, end);
+
+            batch.forEach(college => {
+                const safetyStars = "★".repeat(Math.floor(college.safetyRating || 0)) +
+                    ((college.safetyRating || 0) % 1 >= 0.5 ? "☆" : "");
+
+                const card = document.createElement("div");
+                card.className = "school-card";
+                card.innerHTML = `
+                    <div class="school-card-header">
+                        <div>
+                            <span class="badge-city">${(college.city || "").toUpperCase()}</span>
+                            <span class="board-badge">${college.type || ""}</span>
+                        </div>
+                        <div class="school-rank">${college.ratingRank || ""}</div>
+                    </div>
+                    <div class="school-card-body">
+                        <div class="school-name">${college.name || ""}</div>
+                        <div class="school-info">
+                            <div class="info-item">
+                                <div class="info-label">Location</div>
+                                <div class="info-value">${college.location || ""}</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Rating</div>
+                                <div class="info-value"><span class="rating-badge">${college.rating || "-"}</span></div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Annual Fees</div>
+                                <div class="fees-badge">₹${((college.fees || 0) / 100000).toFixed(1)}L</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Placement %</div>
+                                <div class="info-value">${college.placement || "N/A"}</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Safety Rating</div>
+                                <div class="safety-indicator">
+                                    <span class="safety-stars">${safetyStars}</span>
+                                    <span class="info-value">${college.safetyRating || "-"}</span>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Reviews</div>
+                                <div class="info-value">${college.reviewsCount || 0}</div>
+                            </div>
+                        </div>
+                        <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee;">
+                            <small style="color: #999;">
+                                <strong>Courses:</strong> ${college.courses || "-"} &nbsp;&nbsp;
+                                <strong>Intake:</strong> ${college.intake || "-"} &nbsp;&nbsp;
+                                <strong>Phone:</strong> ${college.phone || "-"} &nbsp;&nbsp;
+                                <strong>Website:</strong> ${college.website || "-"}
+                            </small>
+                        </div>
+                    </div>
+                `;
+
+                card.addEventListener("click", () => openCollegeModal(college));
+                container.appendChild(card);
+            });
+
+            loadedCount = end;
+
+            if (loadedCount >= filteredColleges.length) {
+                document.getElementById("loadMoreBtn").style.display = "none";
+                document.getElementById("noMoreMsg").style.display = "block";
+            } else {
+                document.getElementById("loadMoreBtn").style.display = "block";
+                document.getElementById("noMoreMsg").style.display = "none";
+            }
+        }
+
+        function openCollegeModal(college) {
+            document.getElementById("modalCollegeName").textContent = college.name || "";
+            document.getElementById("modalCity").textContent = college.city || "";
+            document.getElementById("modalType").textContent = college.type || "";
+            document.getElementById("modalLocation").textContent = college.location || "";
+            document.getElementById("modalRating").textContent = college.rating || "";
+            document.getElementById("modalReviews").textContent = (college.reviewsCount || 0) + " reviews";
+
+            document.getElementById("modalFees").textContent =
+                "₹" + ((college.fees || 0) / 100000).toFixed(1) + "L";
+            document.getElementById("modalPlacement").textContent = college.placement || "N/A";
+            document.getElementById("modalSafety").textContent = college.safetyRating || "-";
+
+            document.getElementById("modalCourses").textContent = college.courses || "-";
+            document.getElementById("modalIntake").textContent = college.intake || "-";
+            document.getElementById("modalPhone").textContent = college.phone || "-";
+
+            const website = college.website || "";
+            const websiteLink = document.getElementById("modalWebsiteLink");
+            if (website) {
+                const url = website.startsWith("http") ? website : "https://" + website;
+                websiteLink.href = url;
+                websiteLink.textContent = website;
+                websiteLink.target = "_blank";
+                websiteLink.rel = "noopener noreferrer";
+            } else {
+                websiteLink.href = "#";
+                websiteLink.textContent = "-";
+                websiteLink.removeAttribute("target");
+                websiteLink.removeAttribute("rel");
+            }
+
+            const modalEl = document.getElementById("collegeModal");
+            const modal = new bootstrap.Modal(modalEl);
+            modal.show();
+        }
+
+        // Feedback toggle
+        document.addEventListener("DOMContentLoaded", () => {
+            const feedbackToggle = document.getElementById("feedbackToggle");
+            const feedbackSection = document.getElementById("feedbackSection");
+            const feedbackSubmit = document.getElementById("feedbackSubmit");
+            const feedbackStatus = document.getElementById("feedbackStatus");
+
+            if (feedbackToggle) {
+                feedbackToggle.addEventListener("click", () => {
+                    if (feedbackSection.style.display === "none" || !feedbackSection.style.display) {
+                        feedbackSection.style.display = "block";
+                    } else {
+                        feedbackSection.style.display = "none";
+                    }
+                });
+            }
+
+            if (feedbackSubmit) {
+                feedbackSubmit.addEventListener("click", () => {
+                    feedbackStatus.style.display = "inline";
+                    setTimeout(() => {
+                        feedbackStatus.style.display = "none";
+                    }, 3000);
+                });
+            }
+
+            filterAndSortColleges();
+        });
+
+        document.getElementById("searchInput").addEventListener("input", filterAndSortColleges);
+        document.getElementById("cityFilter").addEventListener("change", filterAndSortColleges);
+        document.getElementById("filterType").addEventListener("change", filterAndSortColleges);
+        document.getElementById("sortOptions").addEventListener("change", filterAndSortColleges);
+        document.getElementById("loadMoreBtn").addEventListener("click", () => renderBatch(false));
+
+        // Reset filters
+        document.getElementById("resetFiltersBtn").addEventListener("click", () => {
+            document.getElementById("searchInput").value = "";
+            document.getElementById("cityFilter").value = "";
+            document.getElementById("filterType").value = "";
+            document.getElementById("sortOptions").value = "rating";
+            filterAndSortColleges();
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
