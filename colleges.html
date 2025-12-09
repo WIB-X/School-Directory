@@ -1,71 +1,407 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-TQT9FP2S');</script>
-<!-- End Google Tag Manager -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Colleges & Universities - WIBest</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineering Colleges in Bangalore - WIBest</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #64748b;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --light-bg: #f8fafc;
+            --card-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            --border-radius: 12px;
+        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--light-bg); color: #1e293b; }
+        .navbar { background: linear-gradient(135deg, var(--primary-color), #1d4ed8); box-shadow: var(--card-shadow); }
+        .navbar-brand img { width: 40px; height: 40px; border-radius: 10px; margin-right: 10px; }
+        .nav-link { color: white !important; font-weight: 500; transition: color 0.3s; }
+        .nav-link:hover { color: #bfdbfe !important; }
+        .hero-section { background: linear-gradient(135deg, var(--primary-color), #3b82f6); color: white; padding: 80px 0; margin-bottom: 40px; }
+        .hero-section h1 { font-size: 3rem; font-weight: 700; margin-bottom: 20px; }
+        .filter-section { background: white; padding: 30px; border-radius: var(--border-radius); box-shadow: var(--card-shadow); margin-bottom: 30px; }
+        .college-card { background: white; border-radius: var(--border-radius); box-shadow: var(--card-shadow); transition: transform 0.3s, box-shadow 0.3s; border: none; overflow: hidden; }
+        .college-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+        .college-header { background: linear-gradient(135deg, var(--primary-color), #1d4ed8); color: white; padding: 20px; }
+        .badge-engineering { background: var(--success-color); color: white; padding: 6px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+        .college-rank { background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 25px; font-weight: 700; font-size: 1.1rem; }
+        .college-name { font-size: 1.4rem; font-weight: 700; margin-bottom: 12px; color: #1e293b; }
+        .info-item { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.95rem; }
+        .info-label { font-weight: 600; color: var(--secondary-color); }
+        .rating-stars { color: var(--warning-color); }
+        .btn-primary { background: var(--primary-color); border: none; border-radius: var(--border-radius); padding: 10px 24px; font-weight: 600; }
+        .btn-primary:hover { background: #1d4ed8; transform: translateY(-1px); }
+        .load-more { text-align: center; margin: 40px 0; }
+        .modal-content { border-radius: var(--border-radius); border: none; box-shadow: var(--card-shadow); }
+        .modal-header { background: var(--primary-color); color: white; border-radius: var(--border-radius) var(--border-radius) 0 0; }
+        @media (max-width: 768px) { .hero-section h1 { font-size: 2rem; } }
+    </style>
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TQT9FP2S"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-  <!-- NAVIGATION -->
-  <nav style="background: linear-gradient(135deg, #007bff 0%, #0056b3 100%); padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000;">
-    <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px;">
-      <a href="index.html" style="display:flex; align-items:center; text-decoration:none;">
-  <img src="logo.png" alt="WIBest logo" style="width:40px; height:40px; border-radius:10px; margin-right:10px;">
-  <span style="font-size: 22px; font-weight: 700; color: white;">WIBest</span>
-</a>
-      <ul style="list-style: none; margin: 0; padding: 0; display: flex; gap: 30px;">
-        <li><a href="index.html" style="color: white; text-decoration: none; font-weight: 600; padding: 12px 20px; border-radius: 25px;">Home</a></li>
-        <li><a href="schools.html" style="color: white; text-decoration: none; font-weight: 600; padding: 12px 20px; border-radius: 25px;">Schools</a></li>
-        <li><a href="colleges.html" style="color: #fff; background: rgba(255,255,255,0.2); text-decoration: none; font-weight: 600; padding: 12px 20px; border-radius: 25px;">Colleges</a></li>
-        <li><a href="about.html" style="color: white; text-decoration: none; font-weight: 600; padding: 12px 20px; border-radius: 25px;">About</a></li>
-        <li><a href="contact.html" style="color: white; text-decoration: none; font-weight: 600; padding: 12px 20px; border-radius: 25px;">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="logo.png" alt="WIBest logo">
+                <span style="font-size: 22px; font-weight: 700;">WIBest</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="schools.html">Schools</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="colleges.html">Colleges</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-  <!-- COMING SOON SECTION -->
-  <section style="text-align: center; padding: 120px 20px; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); min-height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-    <div style="font-size: 80px; margin-bottom: 30px; animation: bounce 2s infinite;">🎓</div>
-    
-    <h1 style="font-size: 48px; color: #212529; margin-bottom: 20px; font-weight: 700;">College Directory Coming Soon!</h1>
-    
-    <p style="font-size: 24px; color: #6c757d; margin-bottom: 40px; max-width: 600px;">
-      Details will soon be reviewed and uploaded. Thanks for your patience!
-    </p>
-    
-    <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
-      <a href="index.html" style="background: #007bff; color: white; padding: 18px 40px; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 18px;">Back to Home</a>
-      <a href="schools.html" style="background: #28a745; color: white; padding: 18px 35px; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 18px;">View Schools</a>
-    </div>
-    
-    <p style="margin-top: 50px; font-size: 16px; color: #6c757d;">
-      We're working hard to bring you the best college rankings
-    </p>
-  </section>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1>Top Engineering Colleges in Bangalore</h1>
+                    <p class="lead mb-0">Discover the best engineering colleges with verified ratings, placements, fees & infrastructure details. Find your perfect college match.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- FOOTER - Copy from your other pages if needed -->
+    <div class="container mt-5 pt-5">
+        <!-- Filters -->
+        <div class="filter-section">
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <label class="form-label fw-bold">Search Colleges</label>
+                    <input type="text" id="searchInput" class="form-control" placeholder="Search by name or area...">
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label fw-bold">Area</label>
+                    <select id="areaFilter" class="form-select">
+                        <option value="">All Areas</option>
+                        <option value="Mysore Road">Mysore Road</option>
+                        <option value="Basavanagudi">Basavanagudi</option>
+                        <option value="Banashankari">Banashankari</option>
+                        <option value="MSR Nagar">MSR Nagar</option>
+                        <option value="Kumaraswamy">Kumaraswamy</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label fw-bold">Fees (₹Lakh/year)</label>
+                    <select id="feesFilter" class="form-select">
+                        <option value="">All Fees</option>
+                        <option value="low">₹1-2L</option>
+                        <option value="medium">₹2-4L</option>
+                        <option value="high">₹4L+</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label fw-bold">Sort By</label>
+                    <select id="sortFilter" class="form-select">
+                        <option value="rating">Highest Rating</option>
+                        <option value="fees">Lowest Fees</option>
+                        <option value="name">Name A-Z</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Colleges Grid -->
+        <div class="row" id="collegesGrid">
+            <!-- College cards will be populated by JavaScript -->
+        </div>
+
+        <!-- Load More Button -->
+        <div class="load-more">
+            <button id="loadMoreBtn" class="btn btn-primary btn-lg">Load More Colleges</button>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // College Data - Engineering Colleges in Bangalore only
+        const collegeData = [
+            {
+                id: 1,
+                name: "RV College of Engineering (RVCE)",
+                area: "Mysore Road",
+                rank: "#1",
+                rating: 4.6,
+                reviews: 2500,
+                fees: "2.5-3.5L",
+                placement: "Avg ₹15L, Highest ₹65L",
+                board: "Engineering",
+                image: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMjU2M2ViIi8+PHRleHQgeD0iNTAlIiB5PSI5MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPlJWQ0UgQ29sbGVnZTwvdGV4dD48L3N2Zz4=",
+                description: "Top-ranked engineering college with excellent placements and world-class infrastructure. Strong industry connections and research opportunities."
+            },
+            {
+                id: 2,
+                name: "BMS College of Engineering",
+                area: "Basavanagudi",
+                rank: "#2",
+                rating: 4.4,
+                reviews: 1800,
+                fees: "2-3L",
+                placement: "Avg ₹12L, Highest ₹50L",
+                board: "Engineering",
+                image: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMTBiOTgxIi8+PHRleHQgeD0iNTAlIiB5PSI5MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPkJNUyBDT0xMRUdFPjwvdGV4dD48L3N2Zz4=",
+                description: "One of the oldest engineering colleges with excellent faculty and consistent placement records across all branches."
+            },
+            {
+                id: 3,
+                name: "PES University",
+                area: "Banashankari",
+                rank: "#3",
+                rating: 4.3,
+                reviews: 3200,
+                fees: "3.5-4.5L",
+                placement: "Avg ₹14L, Highest ₹60L",
+                board: "Engineering",
+                image: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjU5ZTBiIi8+PHRleHQgeD0iNTAlIiB5PSI5MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPlBFUyBVbml2ZXJzaXR5PC90ZXh0Pjwvc3ZnPg==",
+                description: "Modern university with strong focus on innovation, entrepreneurship and industry-ready curriculum."
+            },
+            {
+                id: 4,
+                name: "MS Ramaiah Institute of Technology (MSRIT)",
+                area: "MSR Nagar",
+                rank: "#4",
+                rating: 4.2,
+                reviews: 4500,
+                fees: "2.5-4L",
+                placement: "Avg ₹11L, Highest ₹52L",
+                board: "Engineering",
+                image: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZWY0NDQ0Ii8+PHRleHQgeD0iNTAlIiB5PSI5MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPk1TUklUIDwvdGV4dD48L3N2Zz4=",
+                description: "Well-established institute with good infrastructure and consistent academic performance across branches."
+            },
+            {
+                id: 5,
+                name: "Dayananda Sagar College of Engineering",
+                area: "Kumaraswamy",
+                rank: "#5",
+                rating: 4.1,
+                reviews: 2800,
+                fees: "2-3.5L",
+                placement: "Avg ₹10L, Highest ₹42L",
+                board: "Engineering",
+                image: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjNjQ3NDhiIi8+PHRleHQgeD0iNTAlIiB5PSI5MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPkRTQ0U8L3RleHQ+PC9zdmc+",
+                description: "Large campus with multiple specializations and good placement support for core engineering branches."
+            },
+            {
+                id: 6,
+                name: "CMR Institute of Technology",
+                area: "Whitefield",
+                rank: "#6",
+                rating: 4.0,
+                reviews: 1200,
+                fees: "2-3L",
+                placement: "Avg ₹8L, Highest ₹44L",
+                board: "Engineering",
+                image: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMjU2M2ViIi8+PHRleHQgeD0iNTAlIiB5PSI5MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPkNNUklUIDwvdGV4dD48L3N2Zz4=",
+                description: "IT-focused college located in Bangalore's tech hub with good industry exposure opportunities."
+            }
+        ];
+
+        let filteredColleges = [...collegeData];
+        let displayedColleges = [];
+        const collegesPerLoad = 3;
+        let loadedCount = 0;
+
+        // Initialize
+        function init() {
+            renderColleges();
+            setupFilters();
+            setupLoadMore();
+        }
+
+        // Render colleges
+        function renderColleges() {
+            const grid = document.getElementById('collegesGrid');
+            const collegesToShow = filteredColleges.slice(0, loadedCount + collegesPerLoad);
+            
+            // Update displayed colleges
+            displayedColleges = collegesToShow;
+            
+            collegesToShow.forEach(college => {
+                const card = createCollegeCard(college);
+                grid.appendChild(card);
+            });
+
+            // Hide load more if all shown
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
+            loadMoreBtn.style.display = loadedCount + collegesPerLoad >= filteredColleges.length ? 'none' : 'block';
+        }
+
+        // Create college card
+        function createCollegeCard(college) {
+            const card = document.createElement('div');
+            card.className = 'col-lg-4 col-md-6 mb-4';
+            card.innerHTML = `
+                <div class="college-card h-100" data-college-id="${college.id}">
+                    <div class="college-header position-relative">
+                        <img src="${college.image}" alt="${college.name}" class="img-fluid rounded" style="height: 120px; object-fit: cover; width: 100%;">
+                        <div class="position-absolute top-0 end-0 m-2">
+                            <span class="badge badge-engineering">${college.board}</span>
+                        </div>
+                        <div class="position-absolute bottom-0 start-0 m-2">
+                            <div class="college-rank">${college.rank} (editorial)</div>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="college-name">${college.name}</div>
+                        <div class="info-item">
+                            <span class="info-label">Area</span>
+                            <span class="info-value">${college.area}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Fees</span>
+                            <span class="info-value">${college.fees}/year</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Placement</span>
+                            <span class="info-value">${college.placement}</span>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="rating-stars me-2">
+                                ${'★'.repeat(Math.floor(college.rating)).repeat(1)}${'☆'.repeat(5-Math.floor(college.rating))}
+                            </div>
+                            <span class="fw-bold fs-6">${college.rating}</span>
+                            <span class="text-muted ms-1">(${college.reviews}+ reviews)</span>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-outline-primary flex-fill" data-bs-toggle="modal" data-bs-target="#collegeModal" onclick="showCollegeDetails(${college.id})">
+                                View Details
+                            </button>
+                            <button class="btn btn-primary">
+                                <i class="fas fa-external-link-alt me-1"></i>Visit
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            return card;
+        }
+
+        // Filter and sort
+        function filterAndSortColleges() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const areaFilter = document.getElementById('areaFilter').value;
+            const feesFilter = document.getElementById('feesFilter').value;
+            const sortFilter = document.getElementById('sortFilter').value;
+
+            filteredColleges = collegeData.filter(college => {
+                const matchesSearch = college.name.toLowerCase().includes(searchTerm) || college.area.toLowerCase().includes(searchTerm);
+                const matchesArea = !areaFilter || college.area === areaFilter;
+                const matchesFees = !feesFilter || getFeesCategory(college.fees) === feesFilter;
+                return matchesSearch && matchesArea && matchesFees;
+            });
+
+            // Sort
+            filteredColleges.sort((a, b) => {
+                switch(sortFilter) {
+                    case 'rating': return b.rating - a.rating;
+                    case 'fees': return getFeesNumeric(a.fees) - getFeesNumeric(b.fees);
+                    case 'name': return a.name.localeCompare(b.name);
+                    default: return 0;
+                }
+            });
+
+            loadedCount = 0;
+            document.getElementById('collegesGrid').innerHTML = '';
+            renderColleges();
+        }
+
+        function getFeesCategory(fees) {
+            if (fees.includes('1-2') || fees.includes('1')) return 'low';
+            if (fees.includes('2-4')) return 'medium';
+            return 'high';
+        }
+
+        function getFeesNumeric(fees) {
+            const num = parseFloat(fees.split('-')[0] || fees.split('₹')[1]);
+            return isNaN(num) ? 0 : num;
+        }
+
+        // Setup filters
+        function setupFilters() {
+            document.getElementById('searchInput').addEventListener('input', filterAndSortColleges);
+            ['areaFilter', 'feesFilter', 'sortFilter'].forEach(id => {
+                document.getElementById(id).addEventListener('change', filterAndSortColleges);
+            });
+        }
+
+        // Load more
+        function setupLoadMore() {
+            document.getElementById('loadMoreBtn').addEventListener('click', () => {
+                loadedCount += collegesPerLoad;
+                renderColleges();
+            });
+        }
+
+        // College details modal
+        function showCollegeDetails(id) {
+            const college = collegeData.find(c => c.id === id);
+            const modalBody = document.querySelector('#collegeModal .modal-body');
+            modalBody.innerHTML = `
+                <img src="${college.image}" alt="${college.name}" class="img-fluid rounded mb-3" style="max-height: 200px; object-fit: cover;">
+                <h5 class="mb-3">${college.name}</h5>
+                <p class="text-muted mb-3">${college.description}</p>
+                <div class="row text-center">
+                    <div class="col-4">
+                        <div class="fw-bold fs-3 text-primary">${college.rating}</div>
+                        <div class="text-muted small">Rating</div>
+                    </div>
+                    <div class="col-4">
+                        <div class="fw-bold fs-3 text-success">${college.reviews.toLocaleString()}</div>
+                        <div class="text-muted small">Reviews</div>
+                    </div>
+                    <div class="col-4">
+                        <div class="fw-bold fs-3 text-warning">${college.rank}</div>
+                        <div class="text-muted small">Rank</div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row g-3 mt-3">
+                    <div class="col-6">
+                        <strong>Area:</strong> ${college.area}<br>
+                        <strong>Fees:</strong> ${college.fees}/year<br>
+                        <strong>Placement:</strong> ${college.placement}
+                    </div>
+                </div>
+            `;
+        }
+
+        // College modal HTML (inserted dynamically)
+        const modalHtml = `
+            <div class="modal fade" id="collegeModal" tabindex="-1">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">College Details</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Content populated by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        document.body.insertAdjacentHTML('beforeend', modalHtml);
+
+        // Initialize app
+        init();
+    </script>
 </body>
-
-<style>
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-  40% { transform: translateY(-20px); }
-  60% { transform: translateY(-10px); }
-}
-</style>
 </html>
