@@ -343,6 +343,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container">
         <!-- Filters -->
         <div class="filters">
+			<div style="text-align: right; margin-top: 10px;">
+  <button id="resetFiltersBtn" type="button"
+    style="border: none; background: #f1f3f5; color: #333; padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; cursor: pointer;">
+    Reset filters & sort
+  </button>
+</div>
             <div class="row">
                 <div class="col-md-3">
                     <div class="filter-group">
@@ -787,15 +793,25 @@ card.addEventListener("click", () => openSchoolModal(school));   // NEW
         }
 
         document.addEventListener("DOMContentLoaded", () => {
-            filterAndSortSchools();
-            document.getElementById("searchInput").addEventListener("input", filterAndSortSchools);
-            document.getElementById("cityFilter").addEventListener("change", filterAndSortSchools);
-            document.getElementById("filterType").addEventListener("change", filterAndSortSchools);
-            document.getElementById("sortOptions").addEventListener("change", filterAndSortSchools);
-            document.getElementById("loadMoreBtn").addEventListener("click", () => {
-  renderBatch(false); // or simply renderBatch();
+  filterAndSortSchools();
+
+  document.getElementById("searchInput").addEventListener("input", filterAndSortSchools);
+  document.getElementById("cityFilter").addEventListener("change", filterAndSortSchools);
+  document.getElementById("filterType").addEventListener("change", filterAndSortSchools);
+  document.getElementById("sortOptions").addEventListener("change", filterAndSortSchools);
+  document.getElementById("loadMoreBtn").addEventListener("click", () => {
+    renderBatch(false);
+  });
+
+  // NEW: reset button
+  document.getElementById("resetFiltersBtn").addEventListener("click", () => {
+    document.getElementById("searchInput").value = "";
+    document.getElementById("cityFilter").value = "";
+    document.getElementById("filterType").value = "";
+    document.getElementById("sortOptions").value = "rating";  // default option value
+    filterAndSortSchools();
+  });
 });
-        });
 function openSchoolModal(school) {
   // basic fields
   document.getElementById("modalSchoolName").textContent = school.name;
