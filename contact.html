@@ -12,13 +12,40 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact - WIBest</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --primary:#2563eb; }
+    * { margin:0; padding:0; box-sizing:border-box; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      background: #f5f5f5;
+      font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+      line-height:1.6;
+      color:#333;
+      background:#f8fafc;
+      padding-top:90px;
+    }
+    .navbar {
+      background:linear-gradient(135deg,#2563eb,#1d4ed8);
+      box-shadow:0 10px 25px rgba(0,0,0,0.1);
+    }
+    .navbar-brand img {
+      width:40px; height:40px; border-radius:10px; margin-right:10px;
+    }
+    .nav-link {
+      color:white !important;
+      font-weight:500;
+      padding:12px 20px !important;
+      border-radius:25px;
+    }
+    .nav-link.active {
+      background:rgba(255,255,255,0.2);
+    }
+    .hero-section {
+      background:linear-gradient(135deg,#2563eb,#3b82f6);
+      color:white;
+      padding:80px 0 50px 0;
+      margin-bottom:30px;
     }
   </style>
 </head>
@@ -30,62 +57,81 @@
 
   <!-- NAVIGATION -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img src="logo.png" alt="WIBest logo">
-                <span style="font-size: 22px; font-weight: 700;">WIBest</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="schools.html">Schools</a></li>
-                    <li class="nav-item"><a class="nav-link" href="colleges.html">Colleges</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                </ul>
-            </div>
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="logo.png" alt="WIBest logo">
+        <span style="font-size: 22px; font-weight: 700;">WIBest</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="schools.html">Schools</a></li>
+          <li class="nav-item"><a class="nav-link" href="colleges.html">Colleges</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-8">
+          <h1 class="mb-3">Contact / Feedback</h1>
+          <p class="lead mb-0">
+            Share your suggestions, corrections, or ideas to make WIBest more useful.
+          </p>
         </div>
-    </nav>
-
-  <!-- CONTACT FORM SECTION -->
-  <section style="max-width: 600px; margin: 60px auto; padding: 40px; background: white; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.1);">
-    <h1 style="color: #212529; font-size: 32px; margin-bottom: 10px; text-align: center;">Contact / Feedback</h1>
-    <p style="color: #6c757d; text-align: center; margin-bottom: 40px; font-size: 18px;">We value your suggestions and feedback!</p>
-    
-    <!-- FORM USING FORMSUBMIT -->
-    <form action="https://formsubmit.co/support@wibest.in" method="POST">
-      <input type="hidden" name="_url" value="https://wibest.in/contact.html">
-      <div style="margin-bottom: 25px;">
-        <label for="name" style="display: block; margin-bottom: 8px; font-weight: 600; color: #212529; font-size: 16px;">Your Name:</label>
-        <input type="text" id="name" name="name" required style="width: 100%; padding: 15px; border: 2px solid #e9ecef; border-radius: 10px; font-size: 16px; transition: all 0.3s;">
       </div>
-
-      <div style="margin-bottom: 25px;">
-        <label for="email" style="display: block; margin-bottom: 8px; font-weight: 600; color: #212529; font-size: 16px;">Your Email:</label>
-        <input type="email" id="email" name="email" required style="width: 100%; padding: 15px; border: 2px solid #e9ecef; border-radius: 10px; font-size: 16px; transition: all 0.3s;">
-      </div>
-
-      <div style="margin-bottom: 30px;">
-        <label for="message" style="display: block; margin-bottom: 8px; font-weight: 600; color: #212529; font-size: 16px;">Your Message:</label>
-        <textarea id="message" name="message" rows="6" required style="width: 100%; padding: 15px; border: 2px solid #e9ecef; border-radius: 10px; font-size: 16px; resize: vertical; font-family: inherit; transition: all 0.3s;"></textarea>
-      </div>
-
-      <!-- FormSubmit configuration -->
-      <input type="hidden" name="_subject" value="New contact / feedback from WIBest">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="https://wibest.in/thank-you.html">
-
-      <div style="display: flex; gap: 15px; justify-content: center;">
-        <input type="reset" value="Clear" style="padding: 15px 30px; background: #6c757d; color: white; border: none; border-radius: 10px; cursor: pointer; font-size: 16px; font-weight: 600; flex: 1; max-width: 150px;">
-        <input type="submit" value="Send Feedback" style="padding: 15px 30px; background: #007bff; color: white; border: none; border-radius: 10px; cursor: pointer; font-size: 16px; font-weight: 600; flex: 1; max-width: 200px;">
-      </div>
-    </form>
+    </div>
   </section>
 
-  <!-- FOOTER (optional - copy from index.html if you want consistent footer) -->
+  <!-- CONTACT FORM SECTION -->
+  <section class="mb-5">
+    <div class="container">
+      <div style="max-width: 700px; margin: 0 auto; padding: 40px; background: white; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.1);">
+        <p style="color: #6c757d; text-align: center; margin-bottom: 30px; font-size: 18px;">We value your suggestions and feedback!</p>
+
+        <form action="https://formsubmit.co/support@wibest.in" method="POST">
+          <input type="hidden" name="_url" value="https://wibest.in/contact.html">
+
+          <div style="margin-bottom: 25px;">
+            <label for="name" style="display: block; margin-bottom: 8px; font-weight: 600; color: #212529; font-size: 16px;">Your Name:</label>
+            <input type="text" id="name" name="name" required style="width: 100%; padding: 15px; border: 2px solid #e9ecef; border-radius: 10px; font-size: 16px; transition: all 0.3s;">
+          </div>
+
+          <div style="margin-bottom: 25px;">
+            <label for="email" style="display: block; margin-bottom: 8px; font-weight: 600; color: #212529; font-size: 16px;">Your Email:</label>
+            <input type="email" id="email" name="email" required style="width: 100%; padding: 15px; border: 2px solid #e9ecef; border-radius: 10px; font-size: 16px; transition: all 0.3s;">
+          </div>
+
+          <div style="margin-bottom: 30px;">
+            <label for="message" style="display: block; margin-bottom: 8px; font-weight: 600; color: #212529; font-size: 16px;">Your Message:</label>
+            <textarea id="message" name="message" rows="6" required style="width: 100%; padding: 15px; border: 2px solid #e9ecef; border-radius: 10px; font-size: 16px; resize: vertical; font-family: inherit; transition: all 0.3s;"></textarea>
+          </div>
+
+          <!-- FormSubmit configuration -->
+          <input type="hidden" name="_subject" value="New contact / feedback from WIBest">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://wibest.in/thank-you.html">
+
+          <div style="display: flex; gap: 15px; justify-content: center;">
+            <input type="reset" value="Clear" style="padding: 15px 30px; background: #6c757d; color: white; border: none; border-radius: 10px; cursor: pointer; font-size: 16px; font-weight: 600; flex: 1; max-width: 150px;">
+            <input type="submit" value="Send Feedback" style="padding: 15px 30px; background: #007bff; color: white; border: none; border-radius: 10px; cursor: pointer; font-size: 16px; font-weight: 600; flex: 1; max-width: 200px;">
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Optional footer -->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
