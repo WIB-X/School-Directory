@@ -1,3 +1,5 @@
+updated college:
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -736,27 +738,57 @@
         // { id, city, name, location, type, rating, ratingRank, placement, placementRank,
         //   safetyRating, fees, courses, intake, phone, website, lat, lng, reviewsCount }
         const collegesData = [
-            // Example placeholders – plug your real College.txt data here.
-            // {
-            //   id: "IITM",
-            //   city: "chennai",
-            //   name: "IIT Madras",
-            //   location: "Guindy",
-            //   type: "engineering",
-            //   rating: 4.8,
-            //   ratingRank: 1,
-            //   placement: "98%",
-            //   placementRank: 1,
-            //   safetyRating: 4.6,
-            //   fees: 250000,
-            //   courses: "BTech, MTech",
-            //   intake: "1,000+",
-            //   phone: "+91-44-xxxxxx",
-            //   website: "iitm.ac.in",
-            //   lat: 13.0067,
-            //   lng: 80.2428,
-            //   reviewsCount: 1200
-            // }
+           // BANGALORE (Top 6)
+            {id:1,name:"RV College of Engineering (RVCE)",city:"Bangalore",area:"Mysore Road",rank:"#1",rating:4.6,reviews:2500,fees:"2.5-3.5L",placement:"Avg ₹15L, Highest ₹65L",board:"Engineering"},
+            {id:2,name:"BMS College of Engineering",city:"Bangalore",area:"Basavanagudi",rank:"#2",rating:4.4,reviews:1800,fees:"2-3L",placement:"Avg ₹12L, Highest ₹50L",board:"Engineering"},
+            {id:3,name:"PES University",city:"Bangalore",area:"Banashankari",rank:"#3",rating:4.3,reviews:3200,fees:"3.5-4.5L",placement:"Avg ₹14L, Highest ₹60L",board:"Engineering"},
+            {id:4,name:"MS Ramaiah Institute of Technology (MSRIT)",city:"Bangalore",area:"MSR Nagar",rank:"#4",rating:4.2,reviews:4500,fees:"2.5-4L",placement:"Avg ₹11L, Highest ₹52L",board:"Engineering"},
+            {id:5,name:"Dayananda Sagar College of Engineering",city:"Bangalore",area:"Kumaraswamy",rank:"#5",rating:4.1,reviews:2800,fees:"2-3.5L",placement:"Avg ₹10L, Highest ₹42L",board:"Engineering"},
+            {id:6,name:"CMR Institute of Technology",city:"Bangalore",area:"Whitefield",rank:"#6",rating:4.0,reviews:1200,fees:"2-3L",placement:"Avg ₹8L, Highest ₹44L",board:"Engineering"},
+
+            // DELHI (Top 6)
+            {id:7,name:"Delhi Technological University (DTU)",city:"Delhi",area:"Rohini",rank:"#1",rating:4.5,reviews:3800,fees:"1.5-2L",placement:"Avg ₹18L, Highest ₹85L",board:"Engineering"},
+            {id:8,name:"Netaji Subhas University of Technology (NSUT)",city:"Delhi",area:"Dwarka",rank:"#2",rating:4.4,reviews:2900,fees:"1.8-2.5L",placement:"Avg ₹16L, Highest ₹72L",board:"Engineering"},
+            {id:9,name:"IIIT Delhi",city:"Delhi",area:"Okhla",rank:"#3",rating:4.3,reviews:2100,fees:"3-4L",placement:"Avg ₹20L, Highest ₹90L",board:"Engineering"},
+            {id:10,name:"IGDTUW",city:"Delhi",area:"Kashmere Gate",rank:"#4",rating:4.2,reviews:1500,fees:"1-1.5L",placement:"Avg ₹12L, Highest ₹45L",board:"Engineering"},
+            {id:11,name:"Jamia Millia Islamia (JMI)",city:"Delhi",area:"Okhla",rank:"#5",rating:4.1,reviews:3400,fees:"1.2-2L",placement:"Avg ₹13L, Highest ₹55L",board:"Engineering"},
+            {id:12,name:"MAIT Delhi",city:"Delhi",area:"Rohini",rank:"#6",rating:4.0,reviews:2200,fees:"2-3L",placement:"Avg ₹9L, Highest ₹38L",board:"Engineering"},
+
+            // GURGAON (Top 4)
+            {id:13,name:"Amity University",city:"Gurgaon",area:"Manesar",rank:"#1",rating:4.2,reviews:1800,fees:"3-4.5L",placement:"Avg ₹10L, Highest ₹48L",board:"Engineering"},
+            {id:14,name:"The NorthCap University",city:"Gurgaon",area:"Sector 23A",rank:"#2",rating:4.0,reviews:1100,fees:"2.5-3.5L",placement:"Avg ₹8L, Highest ₹35L",board:"Engineering"},
+            {id:15,name:"GD Goenka University",city:"Gurgaon",area:"Sohna",rank:"#3",rating:3.9,reviews:900,fees:"2-3L",placement:"Avg ₹7L, Highest ₹30L",board:"Engineering"},
+            {id:16,name:"KR Mangalam University",city:"Gurgaon",area:"Sohna Road",rank:"#4",rating:3.8,reviews:700,fees:"2-2.8L",placement:"Avg ₹6L, Highest ₹28L",board:"Engineering"},
+
+            // NOIDA (Top 4)
+            {id:17,name:"Amity University Noida",city:"Noida",area:"Sector 125",rank:"#1",rating:4.1,reviews:2500,fees:"3-4L",placement:"Avg ₹9L, Highest ₹42L",board:"Engineering"},
+            {id:18,name:"Galgotias University",city:"Noida",area:"Greater Noida",rank:"#2",rating:4.0,reviews:1900,fees:"1.5-2.5L",placement:"Avg ₹7L, Highest ₹32L",board:"Engineering"},
+            {id:19,name:"Bennett University",city:"Noida",area:"Greater Noida",rank:"#3",rating:3.9,reviews:800,fees:"4-5L",placement:"Avg ₹11L, Highest ₹50L",board:"Engineering"},
+            {id:20,name:"Sharda University",city:"Noida",area:"Greater Noida",rank:"#4",rating:3.8,reviews:1400,fees:"2-3L",placement:"Avg ₹6L, Highest ₹25L",board:"Engineering"},
+
+            // HYDERABAD (Top 6)
+            {id:21,name:"IIIT Hyderabad",city:"Hyderabad",area:"Gachibowli",rank:"#1",rating:4.7,reviews:1600,fees:"3.5-4.5L",placement:"Avg ₹25L, Highest ₹110L",board:"Engineering"},
+            {id:22,name:"IIT Hyderabad",city:"Hyderabad",area:"Kandi",rank:"#2",rating:4.6,reviews:1200,fees:"2-2.5L",placement:"Avg ₹22L, Highest ₹95L",board:"Engineering"},
+            {id:23,name:"VIT-AP University (VIT-AP)",city:"Hyderabad",area:"Bachupally",rank:"#3",rating:4.4,reviews:2300,fees:"2.5-3.5L",placement:"Avg ₹12L, Highest ₹55L",board:"Engineering"},
+            {id:24,name:"CBIT Hyderabad",city:"Hyderabad",area:"Gandipet",rank:"#4",rating:4.2,reviews:2800,fees:"1.5-2L",placement:"Avg ₹9L, Highest ₹40L",board:"Engineering"},
+            {id:25,name:"VNR VJIET",city:"Hyderabad",area:"Bachupally",rank:"#5",rating:4.1,reviews:2100,fees:"1.8-2.5L",placement:"Avg ₹8L, Highest ₹36L",board:"Engineering"},
+            {id:26,name:"MLRIT Hyderabad",city:"Hyderabad",area:"Dundigal",rank:"#6",rating:4.0,reviews:1700,fees:"1.2-2L",placement:"Avg ₹7L, Highest ₹32L",board:"Engineering"},
+
+            // CHENNAI (Top 6)
+            {id:27,name:"IIT Madras",city:"Chennai",area:"Adyar",rank:"#1",rating:4.8,reviews:3400,fees:"2-2.5L",placement:"Avg ₹28L, Highest ₹130L",board:"Engineering"},
+            {id:28,name:"Anna University (CEG)",city:"Chennai",area:"Guindy",rank:"#2",rating:4.5,reviews:4500,fees:"1-1.5L",placement:"Avg ₹15L, Highest ₹70L",board:"Engineering"},
+            {id:29,name:"SRM Institute of Science and Technology",city:"Chennai",area:"Kattankulathur",rank:"#3",rating:4.3,reviews:5200,fees:"2.5-4L",placement:"Avg ₹11L, Highest ₹52L",board:"Engineering"},
+            {id:30,name:"VIT Chennai",city:"Chennai",area:"Chennai",rank:"#4",rating:4.2,reviews:3100,fees:"2-3.5L",placement:"Avg ₹10L, Highest ₹48L",board:"Engineering"},
+            {id:31,name:"SSN College of Engineering",city:"Chennai",area:"Kalavakkam",rank:"#5",rating:4.1,reviews:2900,fees:"1.5-2L",placement:"Avg ₹9L, Highest ₹42L",board:"Engineering"},
+            {id:32,name:"Sathyabama Institute",city:"Chennai",area:"Jeppiaar Nagar",rank:"#6",rating:4.0,reviews:2400,fees:"2-3L",placement:"Avg ₹8L, Highest ₹38L",board:"Engineering"},
+
+            // MUMBAI (Top 6)
+            {id:33,name:"IIT Bombay",city:"Mumbai",area:"Powai",rank:"#1",rating:4.9,reviews:4200,fees:"2-2.5L",placement:"Avg ₹32L, Highest ₹150L",board:"Engineering"},
+            {id:34,name:"ICT Mumbai",city:"Mumbai",area:"Matunga",rank:"#2",rating:4.7,reviews:1900,fees:"1.5-2L",placement:"Avg ₹20L, Highest ₹80L",board:"Engineering"},
+            {id:35,name:"VJTI Mumbai",city:"Mumbai",area:"Matunga",rank:"#3",rating:4.5,reviews:3600,fees:"1-1.5L",placement:"Avg ₹16L, Highest ₹75L",board:"Engineering"},
+            {id:36,name:"SPIT Mumbai",city:"Mumbai",area:"Andheri",rank:"#4",rating:4.4,reviews:2800,fees:"1.8-2.5L",placement:"Avg ₹14L, Highest ₹65L",board:"Engineering"},
+            {id:37,name:"DJ Sanghvi College",city:"Mumbai",area:"Vile Parle",rank:"#5",rating:4.3,reviews:3200,fees:"2-3L",placement:"Avg ₹12L, Highest ₹55L",board:"Engineering"},
+            {id:38,name:"Thadomal Shahani",city:"Mumbai",area:"Bandra",rank:"#6",rating:4.2,reviews:2100,fees:"2-2.8L",placement:"Avg ₹10L, Highest ₹45L",board:"Engineering"}
         ];
 
         function filterAndSortColleges() {
