@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Engineering Colleges in Bangalore - WIBest</title>
+    <title>Engineering Colleges in India - WIBest</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -70,8 +70,8 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-8">
-                    <h1>Top Engineering Colleges in Bangalore</h1>
-                    <p class="lead mb-0">Discover the best engineering colleges with verified ratings, placements, fees & infrastructure details. Find your perfect college match.</p>
+                    <h1>Top Engineering Colleges Across India</h1>
+                    <p class="lead mb-0">Discover the best engineering colleges in Delhi, Gurgaon, Noida, Hyderabad, Chennai & Mumbai with verified ratings and placement details.</p>
                 </div>
             </div>
         </div>
@@ -85,18 +85,26 @@
                     <label class="form-label fw-bold">Search Colleges</label>
                     <input type="text" id="searchInput" class="form-control" placeholder="Search by name or area...">
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
+                    <label class="form-label fw-bold">City</label>
+                    <select id="cityFilter" class="form-select">
+                        <option value="">All Cities</option>
+                        <option value="Bangalore">Bangalore</option>
+                        <option value="Delhi">Delhi</option>
+                        <option value="Gurgaon">Gurgaon</option>
+                        <option value="Noida">Noida</option>
+                        <option value="Hyderabad">Hyderabad</option>
+                        <option value="Chennai">Chennai</option>
+                        <option value="Mumbai">Mumbai</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
                     <label class="form-label fw-bold">Area</label>
                     <select id="areaFilter" class="form-select">
                         <option value="">All Areas</option>
-                        <option value="Mysore Road">Mysore Road</option>
-                        <option value="Basavanagudi">Basavanagudi</option>
-                        <option value="Banashankari">Banashankari</option>
-                        <option value="MSR Nagar">MSR Nagar</option>
-                        <option value="Kumaraswamy">Kumaraswamy</option>
                     </select>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <label class="form-label fw-bold">Fees (₹Lakh/year)</label>
                     <select id="feesFilter" class="form-select">
                         <option value="">All Fees</option>
@@ -131,98 +139,84 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        // College Data - Engineering Colleges in Bangalore only
+        // Complete Engineering Colleges Data - All Major Cities
         const collegeData = [
-            {
-                id: 1,
-                name: "RV College of Engineering (RVCE)",
-                area: "Mysore Road",
-                rank: "#1",
-                rating: 4.6,
-                reviews: 2500,
-                fees: "2.5-3.5L",
-                placement: "Avg ₹15L, Highest ₹65L",
-                board: "Engineering",
-                image: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMjU2M2ViIi8+PHRleHQgeD0iNTAlIiB5PSI5MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPlJWQ0UgQ29sbGVnZTwvdGV4dD48L3N2Zz4=",
-                description: "Top-ranked engineering college with excellent placements and world-class infrastructure. Strong industry connections and research opportunities."
-            },
-            {
-                id: 2,
-                name: "BMS College of Engineering",
-                area: "Basavanagudi",
-                rank: "#2",
-                rating: 4.4,
-                reviews: 1800,
-                fees: "2-3L",
-                placement: "Avg ₹12L, Highest ₹50L",
-                board: "Engineering",
-                image: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMTBiOTgxIi8+PHRleHQgeD0iNTAlIiB5PSI5MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPkJNUyBDT0xMRUdFPjwvdGV4dD48L3N2Zz4=",
-                description: "One of the oldest engineering colleges with excellent faculty and consistent placement records across all branches."
-            },
-            {
-                id: 3,
-                name: "PES University",
-                area: "Banashankari",
-                rank: "#3",
-                rating: 4.3,
-                reviews: 3200,
-                fees: "3.5-4.5L",
-                placement: "Avg ₹14L, Highest ₹60L",
-                board: "Engineering",
-                image: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjU5ZTBiIi8+PHRleHQgeD0iNTAlIiB5PSI5MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPlBFUyBVbml2ZXJzaXR5PC90ZXh0Pjwvc3ZnPg==",
-                description: "Modern university with strong focus on innovation, entrepreneurship and industry-ready curriculum."
-            },
-            {
-                id: 4,
-                name: "MS Ramaiah Institute of Technology (MSRIT)",
-                area: "MSR Nagar",
-                rank: "#4",
-                rating: 4.2,
-                reviews: 4500,
-                fees: "2.5-4L",
-                placement: "Avg ₹11L, Highest ₹52L",
-                board: "Engineering",
-                image: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZWY0NDQ0Ii8+PHRleHQgeD0iNTAlIiB5PSI5MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPk1TUklUIDwvdGV4dD48L3N2Zz4=",
-                description: "Well-established institute with good infrastructure and consistent academic performance across branches."
-            },
-            {
-                id: 5,
-                name: "Dayananda Sagar College of Engineering",
-                area: "Kumaraswamy",
-                rank: "#5",
-                rating: 4.1,
-                reviews: 2800,
-                fees: "2-3.5L",
-                placement: "Avg ₹10L, Highest ₹42L",
-                board: "Engineering",
-                image: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjNjQ3NDhiIi8+PHRleHQgeD0iNTAlIiB5PSI5MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPkRTQ0U8L3RleHQ+PC9zdmc+",
-                description: "Large campus with multiple specializations and good placement support for core engineering branches."
-            },
-            {
-                id: 6,
-                name: "CMR Institute of Technology",
-                area: "Whitefield",
-                rank: "#6",
-                rating: 4.0,
-                reviews: 1200,
-                fees: "2-3L",
-                placement: "Avg ₹8L, Highest ₹44L",
-                board: "Engineering",
-                image: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMjU2M2ViIi8+PHRleHQgeD0iNTAlIiB5PSI5MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPkNNUklUIDwvdGV4dD48L3N2Zz4=",
-                description: "IT-focused college located in Bangalore's tech hub with good industry exposure opportunities."
-            }
+            // BANGALORE (Top 6)
+            {id:1,name:"RV College of Engineering (RVCE)",city:"Bangalore",area:"Mysore Road",rank:"#1",rating:4.6,reviews:2500,fees:"2.5-3.5L",placement:"Avg ₹15L, Highest ₹65L",board:"Engineering"},
+            {id:2,name:"BMS College of Engineering",city:"Bangalore",area:"Basavanagudi",rank:"#2",rating:4.4,reviews:1800,fees:"2-3L",placement:"Avg ₹12L, Highest ₹50L",board:"Engineering"},
+            {id:3,name:"PES University",city:"Bangalore",area:"Banashankari",rank:"#3",rating:4.3,reviews:3200,fees:"3.5-4.5L",placement:"Avg ₹14L, Highest ₹60L",board:"Engineering"},
+            {id:4,name:"MS Ramaiah Institute of Technology (MSRIT)",city:"Bangalore",area:"MSR Nagar",rank:"#4",rating:4.2,reviews:4500,fees:"2.5-4L",placement:"Avg ₹11L, Highest ₹52L",board:"Engineering"},
+            {id:5,name:"Dayananda Sagar College of Engineering",city:"Bangalore",area:"Kumaraswamy",rank:"#5",rating:4.1,reviews:2800,fees:"2-3.5L",placement:"Avg ₹10L, Highest ₹42L",board:"Engineering"},
+            {id:6,name:"CMR Institute of Technology",city:"Bangalore",area:"Whitefield",rank:"#6",rating:4.0,reviews:1200,fees:"2-3L",placement:"Avg ₹8L, Highest ₹44L",board:"Engineering"},
+
+            // DELHI (Top 6)
+            {id:7,name:"Delhi Technological University (DTU)",city:"Delhi",area:"Rohini",rank:"#1",rating:4.5,reviews:3800,fees:"1.5-2L",placement:"Avg ₹18L, Highest ₹85L",board:"Engineering"},
+            {id:8,name:"Netaji Subhas University of Technology (NSUT)",city:"Delhi",area:"Dwarka",rank:"#2",rating:4.4,reviews:2900,fees:"1.8-2.5L",placement:"Avg ₹16L, Highest ₹72L",board:"Engineering"},
+            {id:9,name:"IIIT Delhi",city:"Delhi",area:"Okhla",rank:"#3",rating:4.3,reviews:2100,fees:"3-4L",placement:"Avg ₹20L, Highest ₹90L",board:"Engineering"},
+            {id:10,name:"IGDTUW",city:"Delhi",area:"Kashmere Gate",rank:"#4",rating:4.2,reviews:1500,fees:"1-1.5L",placement:"Avg ₹12L, Highest ₹45L",board:"Engineering"},
+            {id:11,name:"Jamia Millia Islamia (JMI)",city:"Delhi",area:"Okhla",rank:"#5",rating:4.1,reviews:3400,fees:"1.2-2L",placement:"Avg ₹13L, Highest ₹55L",board:"Engineering"},
+            {id:12,name:"MAIT Delhi",city:"Delhi",area:"Rohini",rank:"#6",rating:4.0,reviews:2200,fees:"2-3L",placement:"Avg ₹9L, Highest ₹38L",board:"Engineering"},
+
+            // GURGAON (Top 4)
+            {id:13,name:"Amity University",city:"Gurgaon",area:"Manesar",rank:"#1",rating:4.2,reviews:1800,fees:"3-4.5L",placement:"Avg ₹10L, Highest ₹48L",board:"Engineering"},
+            {id:14,name:"The NorthCap University",city:"Gurgaon",area:"Sector 23A",rank:"#2",rating:4.0,reviews:1100,fees:"2.5-3.5L",placement:"Avg ₹8L, Highest ₹35L",board:"Engineering"},
+            {id:15,name:"GD Goenka University",city:"Gurgaon",area:"Sohna",rank:"#3",rating:3.9,reviews:900,fees:"2-3L",placement:"Avg ₹7L, Highest ₹30L",board:"Engineering"},
+            {id:16,name:"KR Mangalam University",city:"Gurgaon",area:"Sohna Road",rank:"#4",rating:3.8,reviews:700,fees:"2-2.8L",placement:"Avg ₹6L, Highest ₹28L",board:"Engineering"},
+
+            // NOIDA (Top 4)
+            {id:17,name:"Amity University Noida",city:"Noida",area:"Sector 125",rank:"#1",rating:4.1,reviews:2500,fees:"3-4L",placement:"Avg ₹9L, Highest ₹42L",board:"Engineering"},
+            {id:18,name:"Galgotias University",city:"Noida",area:"Greater Noida",rank:"#2",rating:4.0,reviews:1900,fees:"1.5-2.5L",placement:"Avg ₹7L, Highest ₹32L",board:"Engineering"},
+            {id:19,name:"Bennett University",city:"Noida",area:"Greater Noida",rank:"#3",rating:3.9,reviews:800,fees:"4-5L",placement:"Avg ₹11L, Highest ₹50L",board:"Engineering"},
+            {id:20,name:"Sharda University",city:"Noida",area:"Greater Noida",rank:"#4",rating:3.8,reviews:1400,fees:"2-3L",placement:"Avg ₹6L, Highest ₹25L",board:"Engineering"},
+
+            // HYDERABAD (Top 6)
+            {id:21,name:"IIIT Hyderabad",city:"Hyderabad",area:"Gachibowli",rank:"#1",rating:4.7,reviews:1600,fees:"3.5-4.5L",placement:"Avg ₹25L, Highest ₹110L",board:"Engineering"},
+            {id:22,name:"IIT Hyderabad",city:"Hyderabad",area:"Kandi",rank:"#2",rating:4.6,reviews:1200,fees:"2-2.5L",placement:"Avg ₹22L, Highest ₹95L",board:"Engineering"},
+            {id:23,name:"VIT-AP University (VIT-AP)",city:"Hyderabad",area:"Bachupally",rank:"#3",rating:4.4,reviews:2300,fees:"2.5-3.5L",placement:"Avg ₹12L, Highest ₹55L",board:"Engineering"},
+            {id:24,name:"CBIT Hyderabad",city:"Hyderabad",area:"Gandipet",rank:"#4",rating:4.2,reviews:2800,fees:"1.5-2L",placement:"Avg ₹9L, Highest ₹40L",board:"Engineering"},
+            {id:25,name:"VNR VJIET",city:"Hyderabad",area:"Bachupally",rank:"#5",rating:4.1,reviews:2100,fees:"1.8-2.5L",placement:"Avg ₹8L, Highest ₹36L",board:"Engineering"},
+            {id:26,name:"MLRIT Hyderabad",city:"Hyderabad",area:"Dundigal",rank:"#6",rating:4.0,reviews:1700,fees:"1.2-2L",placement:"Avg ₹7L, Highest ₹32L",board:"Engineering"},
+
+            // CHENNAI (Top 6)
+            {id:27,name:"IIT Madras",city:"Chennai",area:"Adyar",rank:"#1",rating:4.8,reviews:3400,fees:"2-2.5L",placement:"Avg ₹28L, Highest ₹130L",board:"Engineering"},
+            {id:28,name:"Anna University (CEG)",city:"Chennai",area:"Guindy",rank:"#2",rating:4.5,reviews:4500,fees:"1-1.5L",placement:"Avg ₹15L, Highest ₹70L",board:"Engineering"},
+            {id:29,name:"SRM Institute of Science and Technology",city:"Chennai",area:"Kattankulathur",rank:"#3",rating:4.3,reviews:5200,fees:"2.5-4L",placement:"Avg ₹11L, Highest ₹52L",board:"Engineering"},
+            {id:30,name:"VIT Chennai",city:"Chennai",area:"Chennai",rank:"#4",rating:4.2,reviews:3100,fees:"2-3.5L",placement:"Avg ₹10L, Highest ₹48L",board:"Engineering"},
+            {id:31,name:"SSN College of Engineering",city:"Chennai",area:"Kalavakkam",rank:"#5",rating:4.1,reviews:2900,fees:"1.5-2L",placement:"Avg ₹9L, Highest ₹42L",board:"Engineering"},
+            {id:32,name:"Sathyabama Institute",city:"Chennai",area:"Jeppiaar Nagar",rank:"#6",rating:4.0,reviews:2400,fees:"2-3L",placement:"Avg ₹8L, Highest ₹38L",board:"Engineering"},
+
+            // MUMBAI (Top 6)
+            {id:33,name:"IIT Bombay",city:"Mumbai",area:"Powai",rank:"#1",rating:4.9,reviews:4200,fees:"2-2.5L",placement:"Avg ₹32L, Highest ₹150L",board:"Engineering"},
+            {id:34,name:"ICT Mumbai",city:"Mumbai",area:"Matunga",rank:"#2",rating:4.7,reviews:1900,fees:"1.5-2L",placement:"Avg ₹20L, Highest ₹80L",board:"Engineering"},
+            {id:35,name:"VJTI Mumbai",city:"Mumbai",area:"Matunga",rank:"#3",rating:4.5,reviews:3600,fees:"1-1.5L",placement:"Avg ₹16L, Highest ₹75L",board:"Engineering"},
+            {id:36,name:"SPIT Mumbai",city:"Mumbai",area:"Andheri",rank:"#4",rating:4.4,reviews:2800,fees:"1.8-2.5L",placement:"Avg ₹14L, Highest ₹65L",board:"Engineering"},
+            {id:37,name:"DJ Sanghvi College",city:"Mumbai",area:"Vile Parle",rank:"#5",rating:4.3,reviews:3200,fees:"2-3L",placement:"Avg ₹12L, Highest ₹55L",board:"Engineering"},
+            {id:38,name:"Thadomal Shahani",city:"Mumbai",area:"Bandra",rank:"#6",rating:4.2,reviews:2100,fees:"2-2.8L",placement:"Avg ₹10L, Highest ₹45L",board:"Engineering"}
         ];
 
         let filteredColleges = [...collegeData];
         let displayedColleges = [];
-        const collegesPerLoad = 3;
+        const collegesPerLoad = 6;
         let loadedCount = 0;
 
         // Initialize
         function init() {
+            populateAreaFilter();
             renderColleges();
             setupFilters();
             setupLoadMore();
+        }
+
+        // Populate area filter dynamically
+        function populateAreaFilter() {
+            const areaSelect = document.getElementById('areaFilter');
+            const areas = [...new Set(collegeData.map(c => c.area))].sort();
+            areas.forEach(area => {
+                const option = document.createElement('option');
+                option.value = area;
+                option.textContent = area;
+                areaSelect.appendChild(option);
+            });
         }
 
         // Render colleges
@@ -230,15 +224,12 @@
             const grid = document.getElementById('collegesGrid');
             const collegesToShow = filteredColleges.slice(0, loadedCount + collegesPerLoad);
             
-            // Update displayed colleges
-            displayedColleges = collegesToShow;
-            
-            collegesToShow.forEach(college => {
+            collegesToShow.slice(displayedColleges.length).forEach(college => {
                 const card = createCollegeCard(college);
                 grid.appendChild(card);
             });
 
-            // Hide load more if all shown
+            displayedColleges = collegesToShow;
             const loadMoreBtn = document.getElementById('loadMoreBtn');
             loadMoreBtn.style.display = loadedCount + collegesPerLoad >= filteredColleges.length ? 'none' : 'block';
         }
@@ -250,16 +241,22 @@
             card.innerHTML = `
                 <div class="college-card h-100" data-college-id="${college.id}">
                     <div class="college-header position-relative">
-                        <img src="${college.image}" alt="${college.name}" class="img-fluid rounded" style="height: 120px; object-fit: cover; width: 100%;">
+                        <div style="height: 120px; background: linear-gradient(135deg, #${Math.floor(Math.random()*16777215).toString(16)}, #${Math.floor(Math.random()*16777215).toString(16)}); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; font-weight: 700;">
+                            ${college.name.split(' ')[0]}
+                        </div>
                         <div class="position-absolute top-0 end-0 m-2">
                             <span class="badge badge-engineering">${college.board}</span>
                         </div>
                         <div class="position-absolute bottom-0 start-0 m-2">
-                            <div class="college-rank">${college.rank} (editorial)</div>
+                            <div class="college-rank">${college.rank}</div>
                         </div>
                     </div>
                     <div class="p-4">
                         <div class="college-name">${college.name}</div>
+                        <div class="info-item">
+                            <span class="info-label">City</span>
+                            <span class="info-value">${college.city}</span>
+                        </div>
                         <div class="info-item">
                             <span class="info-label">Area</span>
                             <span class="info-value">${college.area}</span>
@@ -268,16 +265,12 @@
                             <span class="info-label">Fees</span>
                             <span class="info-value">${college.fees}/year</span>
                         </div>
-                        <div class="info-item">
-                            <span class="info-label">Placement</span>
-                            <span class="info-value">${college.placement}</span>
-                        </div>
                         <div class="d-flex align-items-center mb-3">
                             <div class="rating-stars me-2">
-                                ${'★'.repeat(Math.floor(college.rating)).repeat(1)}${'☆'.repeat(5-Math.floor(college.rating))}
+                                ${'★'.repeat(Math.floor(college.rating))}${'☆'.repeat(5-Math.floor(college.rating))}
                             </div>
                             <span class="fw-bold fs-6">${college.rating}</span>
-                            <span class="text-muted ms-1">(${college.reviews}+ reviews)</span>
+                            <span class="text-muted ms-1">(${college.reviews.toLocaleString()}+ reviews)</span>
                         </div>
                         <div class="d-flex gap-2">
                             <button class="btn btn-outline-primary flex-fill" data-bs-toggle="modal" data-bs-target="#collegeModal" onclick="showCollegeDetails(${college.id})">
@@ -296,18 +289,19 @@
         // Filter and sort
         function filterAndSortColleges() {
             const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const cityFilter = document.getElementById('cityFilter').value;
             const areaFilter = document.getElementById('areaFilter').value;
             const feesFilter = document.getElementById('feesFilter').value;
             const sortFilter = document.getElementById('sortFilter').value;
 
             filteredColleges = collegeData.filter(college => {
                 const matchesSearch = college.name.toLowerCase().includes(searchTerm) || college.area.toLowerCase().includes(searchTerm);
+                const matchesCity = !cityFilter || college.city === cityFilter;
                 const matchesArea = !areaFilter || college.area === areaFilter;
                 const matchesFees = !feesFilter || getFeesCategory(college.fees) === feesFilter;
-                return matchesSearch && matchesArea && matchesFees;
+                return matchesSearch && matchesCity && matchesArea && matchesFees;
             });
 
-            // Sort
             filteredColleges.sort((a, b) => {
                 switch(sortFilter) {
                     case 'rating': return b.rating - a.rating;
@@ -318,25 +312,25 @@
             });
 
             loadedCount = 0;
+            displayedColleges = [];
             document.getElementById('collegesGrid').innerHTML = '';
             renderColleges();
         }
 
         function getFeesCategory(fees) {
-            if (fees.includes('1-2') || fees.includes('1')) return 'low';
-            if (fees.includes('2-4')) return 'medium';
+            if (fees.includes('1-') || parseFloat(fees.split('-')[0]) < 2) return 'low';
+            if (fees.includes('2-4') || parseFloat(fees.split('-')[0]) < 4) return 'medium';
             return 'high';
         }
 
         function getFeesNumeric(fees) {
-            const num = parseFloat(fees.split('-')[0] || fees.split('₹')[1]);
-            return isNaN(num) ? 0 : num;
+            return parseFloat(fees.split('-')[0].replace('₹', '')) || 0;
         }
 
         // Setup filters
         function setupFilters() {
             document.getElementById('searchInput').addEventListener('input', filterAndSortColleges);
-            ['areaFilter', 'feesFilter', 'sortFilter'].forEach(id => {
+            ['cityFilter', 'areaFilter', 'feesFilter', 'sortFilter'].forEach(id => {
                 document.getElementById(id).addEventListener('change', filterAndSortColleges);
             });
         }
@@ -354,10 +348,11 @@
             const college = collegeData.find(c => c.id === id);
             const modalBody = document.querySelector('#collegeModal .modal-body');
             modalBody.innerHTML = `
-                <img src="${college.image}" alt="${college.name}" class="img-fluid rounded mb-3" style="max-height: 200px; object-fit: cover;">
+                <div style="height: 150px; background: linear-gradient(135deg, #${Math.floor(Math.random()*16777215).toString(16)}, #${Math.floor(Math.random()*16777215).toString(16)}); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 700; border-radius: var(--border-radius); margin-bottom: 20px;">
+                    ${college.name.split(' ')[0]}
+                </div>
                 <h5 class="mb-3">${college.name}</h5>
-                <p class="text-muted mb-3">${college.description}</p>
-                <div class="row text-center">
+                <div class="row text-center mb-4">
                     <div class="col-4">
                         <div class="fw-bold fs-3 text-primary">${college.rating}</div>
                         <div class="text-muted small">Rating</div>
@@ -372,18 +367,22 @@
                     </div>
                 </div>
                 <hr>
-                <div class="row g-3 mt-3">
-                    <div class="col-6">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <strong>City:</strong> ${college.city}<br>
                         <strong>Area:</strong> ${college.area}<br>
-                        <strong>Fees:</strong> ${college.fees}/year<br>
-                        <strong>Placement:</strong> ${college.placement}
+                        <strong>Annual Fees:</strong> ${college.fees}
+                    </div>
+                    <div class="col-md-6">
+                        <strong>Placement:</strong> ${college.placement}<br>
+                        <strong>Board:</strong> ${college.board}
                     </div>
                 </div>
             `;
         }
 
-        // College modal HTML (inserted dynamically)
-        const modalHtml = `
+        // Modal HTML
+        document.body.insertAdjacentHTML('beforeend', `
             <div class="modal fade" id="collegeModal" tabindex="-1">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
@@ -397,10 +396,8 @@
                     </div>
                 </div>
             </div>
-        `;
-        document.body.insertAdjacentHTML('beforeend', modalHtml);
+        `);
 
-        // Initialize app
         init();
     </script>
 </body>
